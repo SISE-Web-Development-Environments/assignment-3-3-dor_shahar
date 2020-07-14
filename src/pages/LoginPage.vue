@@ -39,13 +39,13 @@
       <b-button
         type="submit"
         variant="primary"
-        style="width:100px;display:block;"
         class="mx-auto w-100"
+        :click="Login"
         >Login</b-button
       >
       <div class="mt-2">
         Do not have an account yet?
-        <router-link to="register"> Register in here</router-link>
+        <router-link to="register"> Register </router-link>
       </div>
     </b-form>
     <b-alert
@@ -94,13 +94,13 @@ export default {
     async Login() {
       try {
         const response = await this.axios.post(
-          "https://test-for-3-2.herokuapp.com/user/Login",
+          "http://localhost:3000/login",
           {
             username: this.form.username,
             password: this.form.password
           }
         );
-        // console.log(response);
+        console.log(response);
         // this.$root.loggedIn = true;
         console.log(this.$root.store.login);
         this.$root.store.login(this.form.username);
@@ -124,8 +124,11 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped>
-.container {
-  max-width: 400px;
+@import "@/scss/form-style.scss";
+
+button{
+  background-color: green;
 }
 </style>

@@ -2,15 +2,14 @@
   <div id="app">
     <div id="nav">
       <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
-      <router-link :to="{ name: 'search' }">Search</router-link>|
-      {{ !$root.store.username }}
-      <span v-if="!$root.store.username">
+      <router-link :to="{ name: 'search' }">Search</router-link>
+      <span v-if="!$root.store.username" class="guest">
         Guest:
-        <router-link :to="{ name: 'register' }">Register</router-link>|
-        <router-link :to="{ name: 'login' }">Login</router-link>|
+        <router-link :to="{ name: 'register' }" >Register</router-link>|
+        <router-link :to="{ name: 'login' }" >Login</router-link>
       </span>
       <span v-else>
-        {{ $root.store.username }}: <button @click="Logout">Logout</button>|
+        {{ $root.store.username }}: <button @click="Logout">Logout</button>
       </span>
     </div>
     <router-view />
@@ -46,14 +45,24 @@ export default {
 
 #nav {
   padding: 30px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  display: inline;
+  padding: 8px;
 }
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+#nav .guest{
+  position: absolute;
+  right: 30px;  
 }
 </style>

@@ -221,8 +221,8 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped>
-.container {
-  max-width: 500px;
-}
+@import "@/scss/form-style.scss";
+
 </style>
