@@ -64,6 +64,8 @@
 
 <script>
 import { required } from "vuelidate/lib/validators";
+import { serverAddress } from "../globals.js";
+
 export default {
   name: "Login",
   data() {
@@ -93,12 +95,13 @@ export default {
     async Login() {
       try {
         let response = await this.axios.post(
-          "https://dor-shahar-recipes.herokuapp.com/login",
+          serverAddress + "/login",
           {
             username: this.form.username,
             password: this.form.password
           }
         );
+        // this.$cookie.set("session", keyValue, "expiring time")
         // console.log(response);
         // this.$root.loggedIn = true;
         console.log(this.$root.store.login);
