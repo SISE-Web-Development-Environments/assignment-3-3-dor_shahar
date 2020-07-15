@@ -89,6 +89,88 @@
           The confirmed password is not equal to the original password
         </b-form-invalid-feedback>
       </b-form-group>
+      <b-form-group
+        id="input-group-email"
+        label-cols-sm="3"
+        label="Email:"
+        label-for="email"
+      >
+        <b-form-input
+          id="email"
+          type="email"
+          v-model="$v.form.email.$model"
+          :state="validateState('email')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.email.required">
+          email is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-else-if="!$v.form.email.emailFormat"
+        >
+          Not a valid email address
+        </b-form-invalid-feedback>
+      </b-form-group>
+      <b-form-group
+        id="input-group-firstName"
+        label-cols-sm="3"
+        label="First Name:"
+        label-for="firstName"
+      >
+        <b-form-input
+          id="firstName"
+          type="text"
+          v-model="$v.form.firstName.$model"
+          :state="validateState('firstName')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.firstName.required">
+          First name is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-else-if="!$v.form.firstName.alpha"
+        >
+          Not a valid name - Alpha only
+        </b-form-invalid-feedback>
+      </b-form-group>
+      <b-form-group
+        id="input-group-lastName"
+        label-cols-sm="3"
+        label="Last Name:"
+        label-for="lastName"
+      >
+        <b-form-input
+          id="lastName"
+          type="text"
+          v-model="$v.form.lastName.$model"
+          :state="validateState('lastName')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.lastName.required">
+          Last name is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback
+          v-else-if="!$v.form.lastName.alpha"
+        >
+          Not a valid name - Alpha only
+        </b-form-invalid-feedback>
+      </b-form-group>
+      <b-form-group
+        id="input-group-picture"
+        label-cols-sm="3"
+        label="Profile Picture:"
+        label-for="picture"
+      >
+        <b-form-input
+          id="picture"
+          type="url"
+          v-model="$v.form.picture.$model"
+          :state="validateState('picture')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.picture.required">
+          Profile Picture is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.picture.url">
+          Not a valid URL
+        </b-form-invalid-feedback>
+      </b-form-group>
 
       <b-button type="reset" variant="danger">Reset</b-button>
       <b-button
@@ -121,13 +203,15 @@
 
 <script>
 import countries from "../assets/countries";
+import { serverAddress } from "../globals.js";
 import {
   required,
   minLength,
   maxLength,
   alpha,
   sameAs,
-  email
+  email,
+  url
 } from "vuelidate/lib/validators";
 
 export default {
@@ -142,6 +226,7 @@ export default {
         password: "",
         confirmedPassword: "",
         email: "",
+        picture: "",
         submitError: undefined
       },
       countries: [{ value: null, text: "", disabled: true }],
@@ -166,6 +251,22 @@ export default {
       confirmedPassword: {
         required,
         sameAsPassword: sameAs("password")
+      },
+      picture: {
+        required,
+        url
+      },
+      email: {
+        required,
+        email
+      },
+      firstName: {
+        required,
+        alpha
+      },
+      lastName: {
+        required,
+        alpha
       }
     }
   },
@@ -182,17 +283,21 @@ export default {
     async Register() {
       try {
         const response = await this.axios.post(
-          "https://dor-shahar-recipes.herokuapp.com/auth/Register",
+          serverAddress + "/register",
           {
             username: this.form.username,
-            password: this.form.password
+            firstname: this.form.firstName,
+            lastname: this.form.lastName,
+            country: this.form.country,
+            password: this.form.password,
+            email: this.form.email,
+            profile_image: this.form.picture
           }
         );
         this.$router.push("/login");
         // console.log(response);
       } catch (err) {
-        console.log(err.response);
-        this.form.submitError = err.response.data.message;
+        this.form.submitError = err.response.data;
       }
     },
     onRegister() {
