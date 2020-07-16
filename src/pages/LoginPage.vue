@@ -106,6 +106,8 @@ export default {
           console.log(this.$root.store.login);
           this.$root.store.login(this.form.username);
           this.$router.push("/");
+          console.log(response.cookies)
+          // this.$cookies.set("session", )
         }
         else{
           throw Error;

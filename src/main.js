@@ -5,7 +5,10 @@ import axios from "axios";
 
 import routes from "./routes";
 import VueRouter from "vue-router";
-Vue.use(require('vue-cookies'))
+import VueCookies from 'vue-cookies';
+
+axios.defaults.withCredentials = true;
+Vue.use(VueCookies);
 Vue.use(VueRouter);
 const router = new VueRouter({
   routes,

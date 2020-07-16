@@ -40,21 +40,14 @@ export default {
       try {
         let response = undefined;
         if (this.$root.store.username && this.title == "Last Viewed Recipes") {
-          console.log(serverAddress + "/user/lastViewedRecipes");
-          response = await this.axios.get(
-            serverAddress + "/user/lastViewedRecipes"
-          );
-          console.log(response);
-          console.log(response.data);
+          response = await this.axios.get(serverAddress + "/user/lastViewedRecipes");
         } else {
-          response = await this.axios.get(
-            serverAddress + "/recipe/randomRecipes"
-          );
+          response = await this.axios.get(serverAddress + "/recipe/randomRecipes");
         }
         if (response.data == 503){
           console.log("replace api key");
         } else {
-          const recipes = response.data.recipes;
+          let recipes = response.data;
           this.recipes = [];
           this.recipes.push(...recipes);
         }
