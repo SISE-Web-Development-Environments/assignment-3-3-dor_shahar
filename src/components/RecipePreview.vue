@@ -4,15 +4,15 @@
     class="recipe-preview"
   >
     <div class="recipe-body">
-      <img v-if="image_load" :src="recipe.image" class="recipe-image" />
+      <img :src="recipe.image" class="recipe-image" />
     </div>
     <div class="recipe-footer">
       <div :title="recipe.title" class="recipe-title">
-        {{ recipe.title }}
+        {{ recipe.name }}
       </div>
       <ul class="recipe-overview">
-        <li>{{ recipe.readyInMinutes }} minutes</li>
-        <li>{{ recipe.aggregateLikes }} likes</li>
+        <li>{{ recipe.preperation_time }} minutes</li>
+        <li>{{ recipe.popularity }} likes</li>
       </ul>
     </div>
   </router-link>
@@ -22,14 +22,8 @@
 import { serverAddress } from "../globals.js";
 
 export default {
-  mounted() {
-    this.axios.get(this.recipe.image).then((i) => {
-      this.image_load = true;
-    });
-  },
   data() {
     return {
-      image_load: false
     };
   },
   props: {
@@ -80,12 +74,14 @@ export default {
 }
 
 .recipe-preview .recipe-body .recipe-image {
+  max-width: 556;
+  max-height: 370;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
   margin-bottom: auto;
   display: block;
-  width: 98%;
+  width: 95%;
   height: auto;
   -webkit-background-size: cover;
   -moz-background-size: cover;
