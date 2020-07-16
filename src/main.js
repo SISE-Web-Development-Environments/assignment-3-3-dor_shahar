@@ -39,6 +39,8 @@ import {
   LayoutPlugin,
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
+import { FormTagsPlugin } from 'bootstrap-vue'
+Vue.use(FormTagsPlugin)
 
 axios.interceptors.request.use(
   function(config) {
