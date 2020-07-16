@@ -101,15 +101,18 @@ export default {
             password: this.form.password
           }
         );
-        // this.$cookie.set("session", keyValue, "expiring time")
-        // console.log(response);
-        // this.$root.loggedIn = true;
-        console.log(this.$root.store.login);
-        this.$root.store.login(this.form.username);
-        this.$router.push("/");
+        if (response.status == 200){
+          // console.log(req.headers.cookie)
+          console.log(this.$root.store.login);
+          this.$root.store.login(this.form.username);
+          this.$router.push("/");
+        }
+        else{
+          throw Error;
+        }
       } catch (err) {
         console.log(err.response);
-        this.form.submitError = err.response.data.message;
+        this.form.submitError = err.response.data;
       }
     },
     onLogin() {

@@ -8,8 +8,9 @@
         <router-link :to="{ name: 'register' }" >Register</router-link>|
         <router-link :to="{ name: 'login' }" >Login</router-link>
       </span>
-      <span v-else>
-        {{ $root.store.username }}: <button @click="Logout">Logout</button>
+      <span v-else >
+        <span class='welcomeTitle'>Welcome Back {{ $root.store.username }}</span>
+        <button @click="Logout" id='logoutBtn' class='guest'>Logout</button>
       </span>
     </div>
     <router-view />
@@ -64,5 +65,28 @@ export default {
 #nav .guest{
   position: absolute;
   right: 30px;  
+}
+
+#nav .welcomeTitle{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 25px;
+}
+
+#nav #logoutBtn{
+  border-radius: 4px;
+  font-size: 14px;
+  transition-duration: 0.4s;
+  background-color: black; /* Green */
+  color: white;
+  border: 2px solid #066DF8;
+}
+
+#nav #logoutBtn:hover {
+  border-radius: 4px;
+  background-color: white;
+  color: #066DF8;
+  border: 2px solid black;
 }
 </style>

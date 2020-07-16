@@ -2,32 +2,27 @@
   <div class="container">
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
-        <h1>{{ recipe.title }}</h1>
+        <h1>{{ recipe.name }}</h1>
         <img :src="recipe.image" class="center" />
       </div>
       <div class="recipe-body">
         <div class="wrapper">
           <div class="wrapped">
             <div class="mb-3">
-              <div>Ready in {{ recipe.readyInMinutes }} minutes</div>
-              <div>Likes: {{ recipe.aggregateLikes }} likes</div>
-            </div>
-            Ingredients:
+              <div>Ready in {{ recipe.preperation_time }} minutes</div>
+              <div>Likes: {{ recipe.popularity }} likes</div>
+            </div>Ingredients:
             <ul>
               <li
-                v-for="(r, index) in recipe.extendedIngredients"
+                v-for="(r, index) in recipe.ingredients"
                 :key="index + '_' + r.id"
-              >
-                {{ r.original }}
-              </li>
+              >{{ r.original }}</li>
             </ul>
           </div>
           <div class="wrapped">
             Instructions:
             <ol>
-              <li v-for="s in recipe._instructions" :key="s.number">
-                {{ s.step }}
-              </li>
+              <li v-for="s in recipe._instructions" :key="s.number">{{ s.step }}</li>
             </ol>
           </div>
         </div>
@@ -36,12 +31,14 @@
       {{ $route.params }}
       {{ recipe }}
     </pre
-      > -->
+      >-->
     </div>
   </div>
 </template>
 
 <script>
+import { serverAddress } from "../globals.js";
+
 export default {
   data() {
     return {
@@ -51,14 +48,9 @@ export default {
   async created() {
     try {
       let response;
-      // response = this.$route.params.response;
-
       try {
         response = await this.axios.get(
-          "https://test-for-3-2.herokuapp.com/recipes/info",
-          {
-            params: { id: this.$route.params.recipeId }
-          }
+          serverAddress + "/recipe/recipeDetails/" + this.$route.params.recipeId
         );
 
         // console.log("response.status", response.status);
@@ -71,16 +63,20 @@ export default {
 
       let {
         analyzedInstructions,
-        instructions,
-        extendedIngredients,
-        aggregateLikes,
-        readyInMinutes,
+        name,
+        preperation_time,
+        popularity,
+        vegeterian,
+        vegan,
+        isGlutenFree,
         image,
-        title
-      } = response.data.recipe;
+        ingredients,
+        instructions,
+        serving_num
+      } = response.data[0];
 
-      let _instructions = analyzedInstructions
-        .map((fstep) => {
+      let _instructions = response.data[0].analyzedInstructions
+        .map(fstep => {
           fstep.steps[0].step = fstep.name + fstep.steps[0].step;
           return fstep.steps;
         })
@@ -90,12 +86,23 @@ export default {
         instructions,
         _instructions,
         analyzedInstructions,
-        extendedIngredients,
-        aggregateLikes,
-        readyInMinutes,
+        name,
+        preperation_time,
+        popularity,
+        vegeterian,
+        vegan,
+        isGlutenFree,
         image,
-        title
+        ingredients,
+        serving_num
       };
+
+      // if (!_recipe.readyInMinutes) _recipe.readyInMinutes = 30;
+      // if (!_recipe.vegeterian) _recipe.vegeterian = false;
+      // if (!_recipe.vegan) _recipe.vegan = false;
+      // if (!_recipe.glutenFree) _recipe.glutenFree = false;
+      // if (!_recipe.aggregateLikes) _recipe.aggregateLikes = 0;
+      // if (!_recipe.servings) _recipe.servings = '-';
 
       this.recipe = _recipe;
     } catch (error) {

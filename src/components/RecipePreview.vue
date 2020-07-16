@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { serverAddress } from "../globals.js";
+
 export default {
   mounted() {
     this.axios.get(this.recipe.image).then((i) => {
