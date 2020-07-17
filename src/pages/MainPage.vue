@@ -37,9 +37,9 @@ export default {
   },
   async mounted() {
     const recipes = await this.getRandomRecipes();
-    const last_viewed = await this.getLastViewed();
     this.random_recipes = [];
     this.random_recipes.push(...recipes);
+    const last_viewed = await this.getLastViewed();
     this.last_viewed_recipes = [];
     this.last_viewed_recipes.push(...last_viewed);
   },
@@ -58,8 +58,8 @@ export default {
       if(this.$root.store.username) {
         let response = await this.axios.get(serverAddress + "/user/lastViewedRecipes");
         if (response.data == 503){
-        console.log("replace api key");
-        return [];
+          console.log("replace api key");
+          return [];
         }
         return response.data;
       } else {
