@@ -1,18 +1,26 @@
-<template>
+<template id="container">
   <router-link
     :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
     class="recipe-preview"
   >
     <div class="recipe-body">
       <img :src="recipe.image" class="recipe-image" />
+      <ul class="indicators">
+        <img src="https://cdn1.iconfinder.com/data/icons/flat-green-organic-natural-badges/500/100-vegan-4-512.png" class="indicator" id="vegan_img" v-if="recipe.vegan">
+        <img src="https://i.ibb.co/ZxB52g7/500-F-99661652-72q7f6r-Ga-Q571-KYVkh4s-F1-WPy26-Su-Aks-removebg-preview.png" class="indicator" id="vegeterian_img" v-if="recipe.Vegetarian">
+        <img src="https://i.ibb.co/VgR7VWD/d078f17c1a725f24c8c52961c1bbcee1-400x400-removebg-preview.png" class="indicator" id="gluten_img" v-if="recipe.isGlutenFree">
+      </ul>
     </div>
     <div class="recipe-footer">
       <div :title="recipe.title" class="recipe-title">
         {{ recipe.name }}
       </div>
       <ul class="recipe-overview">
-        <li>{{ recipe.preperation_time }} minutes</li>
-        <li>{{ recipe.popularity }} likes</li>
+        <li><img src="https://i.ibb.co/wrwQ4C2/stopwatch.png" class="icon">{{ recipe.preperation_time }}m</li>
+        <li><img src="https://i.ibb.co/VJtzTQZ/like.png" class="icon">{{ recipe.popularity }}</li>
+      </ul>
+      <ul class="recipe-overview">
+        <li><img src="https://i.ibb.co/4SjF7Sd/favorite.png" class="icon" v-if="recipe.isFavorite"></li>
       </ul>
     </div>
   </router-link>
@@ -66,6 +74,8 @@ export default {
   height: 100%;
   position: relative;
   margin: 10px 10px;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 .recipe-preview > .recipe-body {
   width: 100%;
@@ -81,7 +91,7 @@ export default {
   margin-top: auto;
   margin-bottom: auto;
   display: block;
-  width: 95%;
+  width: 100%;
   height: auto;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -103,6 +113,7 @@ export default {
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .recipe-preview .recipe-footer ul.recipe-overview {
@@ -135,5 +146,21 @@ export default {
   width: 90px;
   display: table-cell;
   text-align: center;
+}
+
+.icon {
+  padding: 1px;
+  margin-bottom: 3px;
+}
+
+.indicators{
+  position: absolute;
+  left: 2%;
+  top: 70%;
+  padding: 0;
+}
+
+.indicator {
+  width: 50px;
 }
 </style>

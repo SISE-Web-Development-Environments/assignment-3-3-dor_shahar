@@ -57,6 +57,7 @@ export default {
     async getLastViewed() {
       if(this.$root.store.username) {
         let response = await this.axios.get(serverAddress + "/user/lastViewedRecipes");
+        console.log(response);
         if (response.data == 503){
           console.log("replace api key");
           return [];
