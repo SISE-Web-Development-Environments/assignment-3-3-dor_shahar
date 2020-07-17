@@ -26,14 +26,14 @@
       >
         <b-form-select id="cuisine" v-model="cuisine_selected" :options="cuisines">
           <template v-slot:first>
-            <b-form-select-option :value="null" disabled>Cuisine</b-form-select-option>
+            <b-form-select-option :value="null">Cuisine</b-form-select-option>
           </template>
         </b-form-select>
       </b-form-group>
       <b-form-group id="input-group-diet" label-for="diet" class="select-class">
         <b-form-select id="diet" v-model="diet_selected" :options="diets">
           <template v-slot:first>
-            <b-form-select-option :value="null" disabled>Diet</b-form-select-option>
+            <b-form-select-option :value="null">Diet</b-form-select-option>
           </template>
         </b-form-select>
       </b-form-group>
@@ -44,10 +44,11 @@
       >
         <b-form-select id="intolerence" v-model="intolerence_selected" :options="intolerences">
           <template v-slot:first>
-            <b-form-select-option :value="null" disabled>Intolerence</b-form-select-option>
+            <b-form-select-option :value="null">Intolerence</b-form-select-option>
           </template>
         </b-form-select>
       </b-form-group>
+      <p></p>
       <b-button
         type="submit"
         variant="primary"
@@ -56,7 +57,11 @@
         >Search</b-button
       >
     </b-form>
-    <RecipePreviewList title="Search Results" :recipes="search_results" />
+    <vue-horizontal-list :items="search_results">
+        <template v-slot:default="{item}">
+          <RecipePreview class="recipePreview" :recipe="item" />
+        </template>
+      </vue-horizontal-list>
   </div>
 </template>
 
@@ -66,6 +71,8 @@ import diets from '../assets/diets';
 import intolerences from '../assets/intolerences';
 import RecipePreviewList from "../components/RecipePreviewList";
 import { serverAddress } from "../globals"
+import VueHorizontalList from '../components/VueHorizontalList';
+import RecipePreview from "../components/RecipePreview";
 
 export default {
   data() {
@@ -107,7 +114,8 @@ export default {
     }
   },
   components: {
-    RecipePreviewList
+    VueHorizontalList,
+    RecipePreview
   }
 };
 </script>
