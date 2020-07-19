@@ -43,7 +43,7 @@
           <div class="wrapped">
             Instructions:
             <ol>
-              <li v-for="s in recipe._instructions" :key="s.number">{{ s.step }}</li>
+              <li v-for="(s, index) in recipe._instructions" :key="index">{{ s.step }}</li>
             </ol>
           </div>
         </div>

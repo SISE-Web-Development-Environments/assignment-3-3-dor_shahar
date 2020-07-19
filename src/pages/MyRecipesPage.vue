@@ -24,8 +24,19 @@ export default {
     };
   },
   async mounted() {
+    try {
     let response = await this.axios.get(serverAddress + "/user/myRecipes");
+    debugger
+    if(response.data == 401) {
+      this.$router.push("/").catch(() => {
+        this.$forceUpdate();
+      });
+      return;
+    }
     this.recipes.push(...response.data);
+    } catch(err) {
+      console.log(err);
+    }
   },
   components: {
     VueHorizontalList,

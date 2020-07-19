@@ -37,7 +37,6 @@ export default {
   },
   mounted() {
     let temp = this.recipe.ingredients;
-    debugger;
     this.recipe_ingredients = temp;
   },
 };

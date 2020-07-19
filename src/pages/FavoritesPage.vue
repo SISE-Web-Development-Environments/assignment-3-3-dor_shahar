@@ -24,7 +24,12 @@ export default {
   },
   async mounted() {
     let response = await this.axios.get(serverAddress + "/user/getFavorites");
-    console.log(response.data);
+    if(response.data == 401) {
+      this.$router.push("/").catch(() => {
+        this.$forceUpdate();
+      });
+      return;
+    }
     this.favorites.push(...response.data);
   },
   components: {

@@ -80,13 +80,13 @@ export default {
   },
   methods: {
     async addToFavorite() {
+      this.recipe.isFavorite = true;
       let response = await this.axios.post(
         serverAddress + "/user/addToFavorites",
         {
           recipe: this.recipe.id
         }
       );
-      if (response.status == 200) this.recipe.isFavorite = true;
     },
     async addToSeen() {
       console.log("Seen");
