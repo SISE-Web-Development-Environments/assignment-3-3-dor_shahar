@@ -62,7 +62,6 @@ export default {
       this.random_recipes.push(...recipes);
     },
     async getRandomRecipes() {
-      console.log(serverAddress + "/recipe/randomRecipes");
       let response = await this.axios.get(
         serverAddress + "/recipe/randomRecipes"
       );
