@@ -2,7 +2,7 @@
   <div>
     <router-link v-on:click.native="addToSeen" :to="route_to" class="recipe-preview">
       <div class="recipe-body">
-        <img :src="recipe.image" class="recipe-image" />
+        <img :src="this.recipe_img" class="recipe-image" />
         <ul class="top_indicators">
           <img
             src="https://i.ibb.co/hfPmKrk/favorite-1.png"
@@ -61,12 +61,13 @@
 </template>
 
 <script>
-import { serverAddress } from "../globals.js";
+import { serverAddress, defaultImage } from "../globals.js";
 
 export default {
   data() {
     return {
-      route_to: {}
+      route_to: {},
+      recipe_img: ""
     };
   },
   props: {
@@ -90,7 +91,6 @@ export default {
       );
     },
     async addToSeen() {
-      console.log("Seen");
       let response = await this.axios.post(serverAddress + "/user/addToSeen", {
         recipe: this.recipe.id
       });
@@ -98,6 +98,10 @@ export default {
     }
   },
   mounted() {
+    if(this.recipe.image)
+      this.recipe_img = this.recipe.image;
+    else
+      this.recipe_img = defaultImage;
     if (this.recipe.id >= 0) {
       this.route_to = { name: "recipe", params: { recipeId: this.recipe.id } };
     } else {
