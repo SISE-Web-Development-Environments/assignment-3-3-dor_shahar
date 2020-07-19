@@ -77,12 +77,14 @@ const shared_data = {
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;
-    console.log("login", this.username);
+    // console.log($cookies.keys());
+    // console.log("login", this.username);
   },
   logout() {
-    console.log("logout");
+    // console.log($cookies.keys());
     localStorage.removeItem("username");
     this.username = undefined;
+    // this.$cookies.delete('session');
   },
 };
 console.log(shared_data);

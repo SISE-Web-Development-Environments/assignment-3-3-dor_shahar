@@ -103,10 +103,10 @@ export default {
         );
         if (response.status == 200){
           // console.log(req.headers.cookie)
-          console.log(this.$root.store.login);
+          // console.log(this.$root.store.login);
           this.$root.store.login(this.form.username);
           this.$router.push("/");
-          console.log(response.cookies)
+          // console.log(response.cookies)
           // this.$cookies.set("session", )
         }
         else{
