@@ -1,9 +1,13 @@
 <template>
   <div class="container">
     <h1 class="title">Main Page</h1>
-    <RecipePreviewList title="Randome Recipes" :recipes="random_recipes" class="RandomRecipes center" />
+    <RecipePreviewList
+      title="Randome Recipes"
+      :recipes="random_recipes"
+      class="RandomRecipes center"
+    />
     <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link>
-   
+
     <RecipePreviewList
       title="Last Viewed Recipes"
       :recipes="last_viewed_recipes"
@@ -24,7 +28,7 @@
 
 <script>
 import RecipePreviewList from "../components/RecipePreviewList";
-import { serverAddress } from "../globals.js"
+import { serverAddress } from "../globals.js";
 export default {
   components: {
     RecipePreviewList
@@ -45,27 +49,29 @@ export default {
   },
   methods: {
     async getRandomRecipes() {
-      let response = await this.axios.get(serverAddress + "/recipe/randomRecipes");
-      if (response.data == 503){
+      console.log(serverAddress + "/recipe/randomRecipes");
+      let response = await this.axios.get(
+        serverAddress + "/recipe/randomRecipes"
+      );
+      if (response.data == 503) {
         console.log("replace api key");
         return [];
-      }
-      else {
+      } else {
         return response.data;
       }
     },
     async getLastViewed() {
-      if(this.$root.store.username) {
-        let response = await this.axios.get(serverAddress + "/user/lastViewedRecipes");
-        console.log(response);
-        if (response.data == 503){
-          console.log("replace api key");
-          return [];
-        }
-        return response.data;
-      } else {
+      let response = await this.axios.get(
+        serverAddress + "/user/lastViewedRecipes"
+      );
+      if (response.data == 503) {
+        console.log("replace api key");
+        return [];
+      } else if (response.data == 401 || !this.$root.store.username) {
+        this.$root.store.logout();
         return this.getRandomRecipes();
-      }      
+      }
+      return response.data;
     }
   }
 };
