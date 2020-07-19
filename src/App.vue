@@ -10,6 +10,8 @@
       </span>
       <span v-else >
         <span class='welcomeTitle'>Welcome Back {{ $root.store.username }}</span>
+        <router-link :to="{ name: 'favorites' }">My Favorites</router-link>
+        <router-link :to="{ name: 'my_recipes' }">My Recipes</router-link>
         <button @click="Logout" id='logoutBtn' class='guest'>Logout</button>
       </span>
     </div>
@@ -58,6 +60,13 @@ export default {
   padding: 8px;
 }
 
+#nav .welcomeTitle{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 25px;
+}
+
 #nav a.router-link-exact-active {
   color: #42b983;
 }
@@ -65,13 +74,6 @@ export default {
 #nav .guest{
   position: absolute;
   right: 30px;  
-}
-
-#nav .welcomeTitle{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    font-size: 25px;
 }
 
 #nav #logoutBtn{

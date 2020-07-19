@@ -68,7 +68,7 @@
         type="submit"
         variant="primary"
         style="width:250px;"
-        class="ml-5 w-75"
+        class="buttons"
         >Search</b-button
       >
     </b-form>
@@ -112,13 +112,15 @@ export default {
     this.cuisines.push(...cuisines);
     this.diets.push(...diets);
     this.intolerences.push(...intolerences);
-    if(this.$root.store.username) {
-      this.last_searched = localStorage.getItem(this.$root.store.username);
-    }
+    this.restoreIfConnected();
   },
   methods: {
     async onSearch() {
       try {
+        if(this.query === "") {
+          this.$root.toast("Search", "Can't search for nothing 🤷‍♂️", "empty");
+          return;
+        }
         let request = serverAddress + "/recipe/searchRecipe/query/"+this.query+"/recipesNum/"+this.result_number_selected;
         if(this.cuisine_selected)
           request = request + "?cuisine="+this.cuisine_selected;
@@ -136,10 +138,7 @@ export default {
         this.search_results.push(...results)
         if(this.search_results.length==0)
           this.$root.toast("Search", "Sorry, no recipe was found", "empty");
-        if(this.$root.store.username) {
-          localStorage.setItem(this.$root.store.username, this.query);
-          this.last_searched = this.query;
-        }
+        this.storeIfConnected();
       } catch (err) {
         if(err.response.status == 503)
           console.log("Replace api key");
@@ -153,6 +152,36 @@ export default {
         results.sort(function(res1, res2) {return res2["popularity"]-res1["popularity"]});
       this.search_results = [];
       this.search_results.push(...results);
+    },
+    restoreIfConnected() {
+      if(this.$root.store.username && localStorage.getItem(this.$root.store.username+"_last") != null) {
+        this.query = localStorage.getItem(this.$root.store.username+"_last");
+        this.result_number_selected = localStorage.getItem(this.$root.store.username+"_resNum");
+        this.sort_by = localStorage.getItem(this.$root.store.username+"_sort");
+        if(localStorage.getItem(this.$root.store.username+"_cuisine") === "null")
+          this.cuisine_selected = null;
+        else
+          this.cuisine_selected = localStorage.getItem(this.$root.store.username+"_cuisine");
+        if(localStorage.getItem(this.$root.store.username+"_diet") === "null")
+          this.diet_selected = null;
+        else
+          this.diet_selected = localStorage.getItem(this.$root.store.username+"_diet");
+        if(localStorage.getItem(this.$root.store.username+"_intolerence") === "null")
+          this.intolerence_selected = null;
+        else
+          this.intolerence_selected = localStorage.getItem(this.$root.store.username+"_intolerence");
+        this.onSearch();
+      }
+    },
+    storeIfConnected() {
+      if(this.$root.store.username) {
+          localStorage.setItem(this.$root.store.username+"_last", this.query);
+          localStorage.setItem(this.$root.store.username+"_resNum", this.result_number_selected);
+          localStorage.setItem(this.$root.store.username+"_sort", this.sort_by);
+          localStorage.setItem(this.$root.store.username+"_cuisine", this.cuisine_selected);
+          localStorage.setItem(this.$root.store.username+"_diet", this.diet_selected);
+          localStorage.setItem(this.$root.store.username+"_intolerence", this.intolerence_selected);
+      }
     }
   },
   components: {
@@ -179,7 +208,7 @@ export default {
 }
 
 #input-group-search {
-  width: 75%;
+  width: 80%;
   display: inline-block;
   margin-right: 10px;
 }
@@ -192,5 +221,9 @@ export default {
   border-radius: 5px;
   background: #DCDCDC;
   border: 1px solid black;
+}
+
+.buttons {
+  margin-right: 15px;
 }
 </style>

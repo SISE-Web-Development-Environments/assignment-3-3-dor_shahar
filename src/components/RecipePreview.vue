@@ -1,10 +1,16 @@
 <template id="container">
+<div>
   <router-link
+    v-on:click.native="addToSeen"
     :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
     class="recipe-preview"
   >
     <div class="recipe-body">
-      <img :src="recipe.image" class="recipe-image" />
+      <img :src="recipe.image" class="recipe-image"/>
+      <ul class="top_indicators">
+        <img src="https://i.ibb.co/hfPmKrk/favorite-1.png" class="top_icons" v-if="this.$root.store.username && this.recipe.isFavorite"/>
+        <img src="https://i.ibb.co/ZX0dgsw/visibility.png" class="top_icons" v-if="this.$root.store.username && this.recipe.isSeen"/>
+      </ul>
       <ul class="indicators">
         <img src="https://cdn1.iconfinder.com/data/icons/flat-green-organic-natural-badges/500/100-vegan-4-512.png" class="indicator" id="vegan_img" v-if="recipe.vegan">
         <img src="https://i.ibb.co/ZxB52g7/500-F-99661652-72q7f6r-Ga-Q571-KYVkh4s-F1-WPy26-Su-Aks-removebg-preview.png" class="indicator" id="vegeterian_img" v-if="recipe.Vegetarian">
@@ -19,11 +25,10 @@
         <li><img src="https://i.ibb.co/wrwQ4C2/stopwatch.png" class="icon">{{ recipe.preperation_time }}m</li>
         <li><img src="https://i.ibb.co/VJtzTQZ/like.png" class="icon">{{ recipe.popularity }}</li>
       </ul>
-      <ul class="recipe-overview">
-        <li><img src="https://i.ibb.co/4SjF7Sd/favorite.png" class="icon" v-if="recipe.isFavorite"></li>
-      </ul>
     </div>
   </router-link>
+  <input type="image" src="https://i.ibb.co/4SjF7Sd/favorite.png" @click="addToFavorite" v-if="this.$root.store.username && !this.recipe.isFavorite && isFavoritable"/>
+</div>
 </template>
 
 <script>
@@ -38,31 +43,30 @@ export default {
     recipe: {
       type: Object,
       required: true
+    },
+    isFavoritable: {
+      type: Boolean,
+      default: true
     }
-
-    // id: {
-    //   type: Number,
-    //   required: true
-    // },
-    // title: {
-    //   type: String,
-    //   required: true
-    // },
-    // readyInMinutes: {
-    //   type: Number,
-    //   required: true
-    // },
-    // image: {
-    //   type: String,
-    //   required: true
-    // },
-    // aggregateLikes: {
-    //   type: Number,
-    //   required: false,
-    //   default() {
-    //     return undefined;
-    //   }
-    // }
+  },
+  methods: {
+    async addToFavorite() {
+      let response = await this.axios.post(serverAddress+"/user/addToFavorites", 
+      {
+        recipe: this.recipe.id
+      });
+      if(response.status == 200) 
+        this.recipe.isFavorite = true;
+    },
+    async addToSeen() {
+      console.log("Seen")
+      let response = await this.axios.post(serverAddress+"/user/addToSeen", 
+      {
+        recipe: this.recipe.id
+      });
+      if(response.status == 200) 
+        this.recipe.isSeen = true;
+    }
   }
 };
 </script>
@@ -85,7 +89,7 @@ export default {
 
 .recipe-preview .recipe-body .recipe-image {
   max-width: 556;
-  max-height: 370;
+  max-height: 270;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -162,5 +166,17 @@ export default {
 
 .indicator {
   width: 50px;
+}
+
+.top_icons {
+  padding: 1px;
+  margin-bottom: 3px;
+}
+
+.top_indicators {
+  position: absolute;
+  left: 2%;
+  top: 2%;
+  padding: 0;
 }
 </style>
