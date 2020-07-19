@@ -1,8 +1,9 @@
 <template>
   <div class="container">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&effect=brick-sign" />
     <div v-if="recipe">
-      <div class="recipe-header mt-3 mb-4">
-        <h1>{{ recipe.name }}</h1>
+      <div class="recipe-header">
+        <div id='title'><h1>{{ recipe.name }}</h1></div>
         <img :src="recipe.image" class="center" />
         <ul class="indicators">
           <img
@@ -127,6 +128,9 @@ export default {
 </script>
 
 <style scoped>
+@import "../scss/form-style.scss";
+@import "../scss/recipePages.scss";
+
 .wrapper {
   display: flex;
 }
@@ -139,7 +143,7 @@ export default {
   margin-right: auto;
   width: 50%;
 }
-/* ul.recipe-overview {
+ul.recipe-overview {
   padding: 5px 10px;
   width: 100%;
   display: -webkit-box;
@@ -169,7 +173,10 @@ ul.recipe-overview li {
   width: 90px;
   display: table-cell;
   text-align: center;
-} */
+}
+.recipe-header{
+  width: 100%;
+}
 
 .icon {
   padding: 1px;
