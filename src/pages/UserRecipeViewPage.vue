@@ -15,7 +15,7 @@
             src="https://i.ibb.co/ZxB52g7/500-F-99661652-72q7f6r-Ga-Q571-KYVkh4s-F1-WPy26-Su-Aks-removebg-preview.png"
             class="indicator"
             id="vegeterian_img"
-            v-if="recipe.vegetarian"
+            v-if="recipe.Vegetarian"
           />
           <img
             src="https://i.ibb.co/VgR7VWD/d078f17c1a725f24c8c52961c1bbcee1-400x400-removebg-preview.png"
@@ -35,16 +35,19 @@
             </div>Ingredients:
             <ul>
               <li
-                v-for="(r, index) in recipe.ingredients"
-                :key="index + '_' + r.id"
-              >{{ r.original }}</li>
+                v-for="(r, index) in recipe._ingredients"
+                :key="index"
+              >{{ r }}</li>
             </ul>
           </div>
           <div class="wrapped">
-            Instructions:
-            <ol>
-              <li v-for="s in recipe._instructions" :key="s.number">{{ s.step }}</li>
-            </ol>
+            Instructions:<br>
+            <ul>
+              <li
+                v-for="(r, index) in recipe._instructions"
+                :key="index"
+              >{{ r }}</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -87,7 +90,7 @@ export default {
         name,
         preperation_time,
         popularity,
-        vegetarian,
+        Vegetarian,
         vegan,
         isGlutenFree,
         image,
@@ -96,21 +99,18 @@ export default {
         serving_num
       } = response.data[0];
 
-      let _instructions = response.data[0].analyzedInstructions
-        .map(fstep => {
-          fstep.steps[0].step = fstep.name + fstep.steps[0].step;
-          return fstep.steps;
-        })
-        .reduce((a, b) => [...a, ...b], []);
+      let _ingredients = response.data[0].ingredients.split(',');
+      let _instructions = response.data[0].instructions.split('\\n');
 
       let _recipe = {
         instructions,
         _instructions,
+        _ingredients,
         analyzedInstructions,
         name,
         preperation_time,
         popularity,
-        vegetarian,
+        Vegetarian,
         vegan,
         isGlutenFree,
         image,
@@ -138,6 +138,10 @@ export default {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+ul{
+    padding: 0;
+    list-style-type: none;
 }
 /* ul.recipe-overview {
   padding: 5px 10px;
