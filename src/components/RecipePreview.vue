@@ -49,8 +49,9 @@
           </li>
         </ul>
       </div>
-    </router-link>
+    </router-link><br>
     <input
+      id='favoritsBtn'
       type="image"
       src="https://i.ibb.co/4SjF7Sd/favorite.png"
       @click="addToFavorite"
@@ -109,8 +110,8 @@ export default {
 <style scoped>
 .recipe-preview {
   display: inline-block;
-  width: 90%;
-  height: 100%;
+  width: 250px;
+  height: auto;
   position: relative;
   margin: 10px 10px;
   border: 2px solid black;
@@ -123,8 +124,8 @@ export default {
 }
 
 .recipe-preview .recipe-body .recipe-image {
-  max-width: 556;
-  max-height: 270;
+  max-width: 100%;
+  max-height: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -214,4 +215,5 @@ export default {
   top: 2%;
   padding: 0;
 }
+
 </style>

@@ -33,14 +33,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/form-style.scss";
 // #cols{
 //   max-width: 30%;
 // }
-.container {
-  min-height: 400px;
+#cols {
+  align-items: center;
 }
 .recipePreview{
-  max-width: 350px;
-  padding-top: 100px;
+  padding: 10px;
+  margin: auto;
 }
 </style>
