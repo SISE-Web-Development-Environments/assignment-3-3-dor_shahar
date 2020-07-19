@@ -134,7 +134,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/scss/form-style.scss";
-
+.container {
+    padding-top: 40px;
+    max-width: 400px;
+    text-align: center;
+}
 button{
   background-color: green;
 }
