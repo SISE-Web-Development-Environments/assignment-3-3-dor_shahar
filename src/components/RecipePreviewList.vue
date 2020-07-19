@@ -40,6 +40,7 @@ export default {
   min-height: 400px;
 }
 .recipePreview{
+  max-width: 350px;
   padding-top: 100px;
 }
 </style>
