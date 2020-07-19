@@ -65,7 +65,7 @@ export default {
       let response = await this.axios.get(
         serverAddress + "/recipe/randomRecipes"
       );
-      if (response.data == 503) {
+      if (response.data == 503 || response.data == 500) {
         console.log("replace api key");
         return [];
       } else {
@@ -76,7 +76,7 @@ export default {
       let response = await this.axios.get(
         serverAddress + "/user/lastViewedRecipes"
       );
-      if (response.data == 503) {
+      if (response.data == 503 || response.data == 500) {
         console.log("replace api key");
         return [];
       } else if (response.data == 401 || !this.$root.store.username) {

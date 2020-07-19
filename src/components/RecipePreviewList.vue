@@ -39,4 +39,7 @@ export default {
 .container {
   min-height: 400px;
 }
+.recipePreview{
+  padding-top: 100px;
+}
 </style>
