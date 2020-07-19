@@ -35,5 +35,9 @@ export default {
 </script>
 
 <style scoped>
-
+.recipePreview{
+  max-width: 350px;
+  /* max-height: 150px; */
+  /* padding-top: 100px; */
+}
 </style>

@@ -317,4 +317,10 @@
   .vhl-item {
     z-index: 1;
   }
+
+  /* .recipePreview{
+  max-width: 350px;
+  max-height: 150px; */
+  /* padding-top: 100px; */
+/* } */
 </style>
