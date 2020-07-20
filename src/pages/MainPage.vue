@@ -29,6 +29,7 @@
         type="button"
         >Refresh</b-button
       >
+    <router-link v-if="!$root.store.username" to="/login" id='loginLink'>You need to Login to vue this</router-link>
     <!-- <div
       style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
     >
@@ -140,5 +141,10 @@ text-transform: none;
 ::v-deep .blur .recipe-preview {
   pointer-events: none;
   cursor: default;
+}
+
+#loginLink {
+  width: 100%;
+  height: 100%;
 }
 </style>

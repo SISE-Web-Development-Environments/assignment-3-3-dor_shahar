@@ -2,12 +2,13 @@
   <div class="container">
     <div v-if="recipe">
       <div class="recipe-header">
-        <div id='title'><h1 class='h1'>{{ recipe.name }}</h1></div>
+        <div id="title">
+          <h1 class="h1">{{ recipe.name }}</h1>
+        </div>
         <img :src="recipe.image" class="img" />
         <ul class="indicators">
           <img
             src="https://cdn1.iconfinder.com/data/icons/flat-green-organic-natural-badges/500/100-vegan-4-512.png"
-          
             class="indicator"
             id="vegan_img"
             v-if="recipe.vegan"
@@ -27,25 +28,40 @@
         </ul>
       </div>
       <div class="recipe-body">
+        <div class="mb-3">
+          <div class="inLine">
+            <img src="https://i.ibb.co/wrwQ4C2/stopwatch.png" class="icon" />
+            {{ recipe.preperation_time }} minutes
+          </div>
+          <div class="inLine">
+            <img src="https://i.ibb.co/VJtzTQZ/like.png" class="icon" />
+            {{ recipe.popularity }} likes
+          </div>
+          <div class="inLine">
+            <img src="https://image.flaticon.com/icons/svg/3081/3081347.svg" class="icon" />
+            {{ recipe.serving_num }} dishes
+          </div>
+        </div>
         <div class="wrapper">
           <div class="wrapped">
-            <div class="mb-3">
-              <div>Ready in {{ recipe.preperation_time }} minutes</div>
-              <div>Likes: {{ recipe.popularity }} likes</div>
-              <div>servings: {{ recipe.serving_num }} dishes</div>
-            </div>Ingredients:
-            <ul>
-              <li
-                v-for="(r, index) in recipe.ingredients"
-                :key="index + '_' + r.id"
-              >{{ r.original }}</li>
-            </ul>
+            <h2 class="h2">Ingredients:</h2>
+            <div class="pageText">
+              <ul>
+                <li 
+                  class='li'
+                  v-for="(r, index) in recipe.ingredients"
+                  :key="index + '_' + r.id"
+                >{{ r.original }}</li>
+              </ul>
+            </div>
           </div>
           <div class="wrapped">
-            <h2 class='h2'>Instructions:</h2>
-            <ol>
-              <li v-for="(s, index) in recipe._instructions" :key="index">{{ s.step }}</li>
-            </ol>
+            <h2 class="h2">Instructions:</h2>
+            <div class="pageText">
+              <ol>
+                <li class='li' v-for="(s, index) in recipe._instructions" :key="index">{{ s.step }}</li>
+              </ol>
+            </div>
           </div>
         </div>
       </div>
@@ -173,7 +189,7 @@ ul.recipe-overview li {
   display: table-cell;
   text-align: center;
 }
-.recipe-header{
+.recipe-header {
   width: 100%;
 }
 
@@ -196,5 +212,4 @@ ul.recipe-overview li {
   margin-right: 20px;
   z-index: 10000;
 }
-
 </style>
