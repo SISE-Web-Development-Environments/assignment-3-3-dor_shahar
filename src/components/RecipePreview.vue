@@ -1,5 +1,5 @@
 <template id="container">
-  <div>
+  <div id="wrapper">
     <router-link v-on:click.native="addToSeen" :to="route_to" class="recipe-preview">
       <div class="recipe-body">
         <img :src="this.recipe_img" class="recipe-image" />
@@ -119,6 +119,7 @@ export default {
   position: relative;
   margin: 10px 10px;
   border: 2px solid black;
+  background-color: white;
   border-radius: 5px;
 }
 .recipe-preview > .recipe-body {

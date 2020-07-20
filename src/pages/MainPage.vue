@@ -1,10 +1,11 @@
 <template>
   <div class="container">
-    <h1 class="title">Main Page</h1>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredericka the Great">
+    <h1 class="title">Be Your Own Chef</h1>
     <div id="listWrapper">
     <RecipePreviewList 
       id='randomList'
-      title="Random Recipes"
+      title="Explore and Cook"
       :recipes="random_recipes"
       class="RandomRecipes"
     />
@@ -12,7 +13,7 @@
 
     <RecipePreviewList
       id='lastViewedList'
-      title="Last Viewed Recipes"
+      title="Intrested In Lately"
       :recipes="last_viewed_recipes"
       :class="{
         RandomRecipes: true,
@@ -95,11 +96,28 @@ export default {
 @import "@/scss/form-style.scss";
 @import "@/scss/recipePages.scss";
 
+.container {
+  width: 70%;
+}
+
+.title {
+  padding-top: 4%;
+  font-family: "Fredericka the Great";
+font-size: 55px;
+letter-spacing: -0.8px;
+word-spacing: 0.4px;
+color: #000000;
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
+}
 
 #listWrapper {
   display: flex;
   padding-right: 15%;
-  padding-top: 8%;
+  padding-top: 5%;
 }
 
 #randomList {

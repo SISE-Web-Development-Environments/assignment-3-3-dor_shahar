@@ -1,12 +1,15 @@
 <template>
   <div class="container">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredericka the Great">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin Sketch">
     <h1 class="title">Login</h1>
-    <b-form @submit.prevent="onLogin">
+    <b-form @submit.prevent="onLogin" id="form">
       <b-form-group
         id="input-group-Username"
         label-cols-sm="3"
         label="Username:"
         label-for="Username"
+        class="input"
       >
         <b-form-input
           id="Username"
@@ -24,6 +27,7 @@
         label-cols-sm="3"
         label="Password:"
         label-for="Password"
+        class="input"
       >
         <b-form-input
           id="Password"
@@ -131,16 +135,35 @@ export default {
 
 .container {
   margin-top: 40px;
-  max-width: 500px;
-  padding: 20px 80px 40px 80px;
+  max-width: 600px;
   text-align: center;
   background-color: white;
   border-radius: 50px;
   padding: 50px;
-  max-width: 500px;
-  text-align: center;
 }
+
+.title {
+  font-family: "Fredericka the Great";
+  margin-right: 1%;
+}
+
 button {
   background-color: green;
+}
+
+#form {
+  font-family: "Cabin Sketch";
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.mt-2 {
+  padding-top: 3%;
+}
+
+.input {
+  margin-right: 10%;
+  max-width: 400px;
+  margin-left: 2%;
 }
 </style>

@@ -329,9 +329,10 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/scss/form-style.scss";
+@import "@/scss/recipePages.scss";
 .container {
     padding-top: 40px;
-    max-width: 400px;
+    max-width: 700px;
     text-align: center;
 }
 </style>
