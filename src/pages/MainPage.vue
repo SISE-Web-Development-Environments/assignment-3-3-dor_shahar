@@ -130,7 +130,7 @@ text-transform: none;
 }
 
 #refreshBtn {
-  margin-right: 44%;
+  margin-right: 24%;
   margin-bottom: 2%;
 }
 

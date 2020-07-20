@@ -145,6 +145,7 @@ export default {
 
 <style scoped>
 @import "../scss/form-style.scss";
+@import "../scss/recipePages.scss";
 
 .wrapper {
   display: flex;
