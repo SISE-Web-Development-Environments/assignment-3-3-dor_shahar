@@ -44,7 +44,7 @@
         </div>
         <div class="wrapper">
           <div class="wrapped">
-            <h2 class="h2">Ingredients:</h2>
+            <h2 class="h2">Ingredients</h2>
             <div class="pageText">
               <ul>
                 <li 
@@ -56,7 +56,7 @@
             </div>
           </div>
           <div class="wrapped">
-            <h2 class="h2">Instructions:</h2>
+            <h2 class="h2">Instructions</h2>
             <div class="pageText">
               <ol>
                 <li class='li' v-for="(s, index) in recipe._instructions" :key="index">{{ s.step }}</li>
@@ -146,71 +146,4 @@ export default {
 <style scoped>
 @import "../scss/form-style.scss";
 @import "../scss/recipePages.scss";
-
-.wrapper {
-  display: flex;
-}
-.wrapped {
-  width: 50%;
-}
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-ul.recipe-overview {
-  padding: 5px 10px;
-  width: 100%;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -o-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1 auto;
-  -ms-flex: 1 auto;
-  flex: 1 auto;
-  table-layout: fixed;
-  margin-bottom: 0px;
-}
-
-ul.recipe-overview li {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -o-box-flex: 1;
-  -ms-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  width: 90px;
-  display: table-cell;
-  text-align: center;
-}
-.recipe-header {
-  width: 100%;
-}
-
-.icon {
-  padding: 1px;
-  margin-bottom: 3px;
-}
-
-.indicators {
-  position: relative;
-  left: 2%;
-  top: 70%;
-  padding: 0;
-}
-
-.indicator {
-  margin-top: -30px;
-  width: 100px;
-  margin-left: 20px;
-  margin-right: 20px;
-  z-index: 10000;
-}
 </style>
