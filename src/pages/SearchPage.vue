@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h1 class="h1">Search Page</h1>
-    <b-form @submit.prevent="onSearch">
+    <h1 class="h1">Search For Your Recipe</h1>
+    <b-form @submit.prevent="onSearch" id="form">
       <b-form-group id="input-group-search" label-for="query">
         <b-form-input
           id="query"
@@ -10,9 +10,7 @@
           v-model="query"
         ></b-form-input>
       </b-form-group>
-      <div v-if="!(this.last_searched==='')" id="last_search_div">
-        Last Searched: {{ last_searched }}
-      </div>
+      <div id="sec-raw-input-div">
       <b-form-group
         id="input-group-result-number"
         label="Number of Results: "
@@ -33,6 +31,7 @@
         name="sort_radio"
       ></BFormRadioGroup>
     </b-form-group>
+      </div>
       <br>
       <b-form-group
         id="input-group-cuisine"
@@ -129,6 +128,10 @@ export default {
         if(this.intolerence_selected)
           request = request + "?intolerence="+this.intolerence_selected;
         let response = await this.axios.get(request);
+        if(response.data == 503) {
+          console.log('replace api key')
+          return;
+        }
         let results = response.data;
         if(this.sort_by === 'time')
           results.sort(function(res1, res2) {return res1["preperation_time"]-res2["preperation_time"]});
@@ -194,6 +197,8 @@ export default {
 
 <style>
 @import "../scss/main-container.scss";
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
 .select-class {
   display: inline-block;
   width: 20%;
@@ -214,23 +219,61 @@ export default {
   margin-right: 10px;
 }
 
-#last_search_div {
-  display: inline-block;
-  width: 20%;
-  height: 37px;
-  padding: 6px;
-  border-radius: 5px;
-  background: #DCDCDC;
-  border: 1px solid black;
-}
-
 .buttons {
-  margin-right: 15px;
+	box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+	background-color:#3d94f6;
+	border-radius:6px;
+	border:1px solid #337fed;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+  text-shadow:0px 1px 0px #1570cd;
+  height: 60px;
+  width: 20px;
+}
+.buttons:hover {
+	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+	background-color:#1e62d0;
+}
+.buttons:active {
+	position:relative;
+	top:1px;
 }
 
 .list{
     max-width: 90%;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 20px;
+}
+
+#form {
+  font-family: "Cabin Sketch";
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 30px;
+}
+
+#sec-raw-input-div {
+  display: flex;
+  width: 65%;
+  margin-left: 12%;
+};
+
+#input-group-sort {
+  flex: 2;
+}
+
+#input-group-result-number {
+  flex: 1;
+}
+
+.h1 {
+  margin-bottom: 30px;
 }
 </style>

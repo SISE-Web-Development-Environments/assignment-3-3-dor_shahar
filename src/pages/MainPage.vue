@@ -1,54 +1,51 @@
 <template>
   <div class="container">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredericka the Great">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fredericka the Great"
+    />
     <h1 class="title">Be Your Own Chef</h1>
     <div id="listWrapper">
-    <RecipePreviewList 
-      id='randomList'
-      title="Explore and Cook"
-      :recipes="random_recipes"
-      class="RandomRecipes"
-    />
-    <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
+      <RecipePreviewList
+        id="randomList"
+        title="Explore and Cook"
+        :recipes="random_recipes"
+        class="RandomRecipes"
+      />
+      <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
 
-    <RecipePreviewList
-      id='lastViewedList'
-      title="Intrested In Lately"
-      :recipes="last_viewed_recipes"
-      :class="{
-        RandomRecipes: true,
-        blur: !$root.store.username,
-        center: true
-      }"
-      disabled
-    />
+      <RecipePreviewList
+        id="lastViewedList"
+        title="Intrested In Lately"
+        :recipes="last_viewed_recipes"
+        :class="{
+          RandomRecipes: true,
+          center: true,
+        }"
+        v-if="$root.store.username"
+        disabled
+      />
+      <LoginComponent v-else id="login" title="h2" />
     </div>
-        <b-button 
-        v-on:click='refreshRandom()'
-        id='refreshBtn'
-        type="button"
-        >Refresh</b-button
-      >
-    <router-link v-if="!$root.store.username" to="/login" id='loginLink'>You need to Login to vue this</router-link>
-    <!-- <div
-      style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
+    <b-button v-on:click="refreshRandom()" id="refreshBtn" type="button"
+      >Refresh</b-button
     >
-      Centeredasdasdad
-    </div>-->
   </div>
 </template>
 
 <script>
 import RecipePreviewList from "../components/RecipePreviewList";
+import LoginComponent from "../components/LoginComponent";
 import { serverAddress } from "../globals.js";
 export default {
   components: {
-    RecipePreviewList
+    RecipePreviewList,
+    LoginComponent,
   },
   data() {
     return {
       random_recipes: [],
-      last_viewed_recipes: []
+      last_viewed_recipes: [],
     };
   },
   async mounted() {
@@ -60,7 +57,7 @@ export default {
     this.last_viewed_recipes.push(...last_viewed);
   },
   methods: {
-    async refreshRandom(){
+    async refreshRandom() {
       const recipes = await this.getRandomRecipes();
       this.random_recipes = [];
       this.random_recipes.push(...recipes);
@@ -88,8 +85,8 @@ export default {
         return this.getRandomRecipes();
       }
       return response.data;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -104,15 +101,15 @@ export default {
 .title {
   padding-top: 4%;
   font-family: "Fredericka the Great";
-font-size: 55px;
-letter-spacing: -0.8px;
-word-spacing: 0.4px;
-color: #000000;
-font-weight: 700;
-text-decoration: none;
-font-style: normal;
-font-variant: normal;
-text-transform: none;
+  font-size: 55px;
+  letter-spacing: -0.8px;
+  word-spacing: 0.4px;
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
 }
 
 #listWrapper {
@@ -130,7 +127,7 @@ text-transform: none;
 }
 
 #refreshBtn {
-  margin-right: 24%;
+  margin-right: 43%;
   margin-bottom: 2%;
 }
 
@@ -146,5 +143,8 @@ text-transform: none;
 #loginLink {
   width: 100%;
   height: 100%;
+}
+
+#login {
 }
 </style>
