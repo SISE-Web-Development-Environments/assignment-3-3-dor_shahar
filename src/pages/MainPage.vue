@@ -1,23 +1,19 @@
 <template>
   <div class="container">
-    <h1 class="title">Main Page</h1>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredericka the Great">
+    <h1 class="title">Be Your Own Chef</h1>
+    <div id="listWrapper">
     <RecipePreviewList 
       id='randomList'
-      title="Random Recipes"
+      title="Explore and Cook"
       :recipes="random_recipes"
       class="RandomRecipes"
     />
-    <b-button 
-        v-on:click='refreshRandom()'
-        id='refreshBtn'
-        type="button"
-        >Refresh</b-button
-      >
     <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
 
     <RecipePreviewList
       id='lastViewedList'
-      title="Last Viewed Recipes"
+      title="Intrested In Lately"
       :recipes="last_viewed_recipes"
       :class="{
         RandomRecipes: true,
@@ -26,6 +22,13 @@
       }"
       disabled
     />
+    </div>
+        <b-button 
+        v-on:click='refreshRandom()'
+        id='refreshBtn'
+        type="button"
+        >Refresh</b-button
+      >
     <router-link v-if="!$root.store.username" to="/login" id='loginLink'>You need to Login to vue this</router-link>
     <!-- <div
       style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
@@ -93,28 +96,44 @@ export default {
 <style lang="scss" scoped>
 @import "@/scss/form-style.scss";
 @import "@/scss/recipePages.scss";
+
 .container {
-    padding-top: 40px;
-    max-width: 30%;
-    text-align: center;
+  width: 70%;
 }
 
-#randomList{
-  position: absolute;
-  right: 22%;
-}
-#lastViewedList{
-  position: absolute;
-  left: 22%;
+.title {
+  padding-top: 4%;
+  font-family: "Fredericka the Great";
+font-size: 55px;
+letter-spacing: -0.8px;
+word-spacing: 0.4px;
+color: #000000;
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
 }
 
-#refreshBtn{
-  position: absolute;
-  right: 30px;
+#listWrapper {
+  display: flex;
+  padding-right: 15%;
+  padding-top: 5%;
 }
-.RandomRecipes {
-  margin: 10px 0 10px;
+
+#randomList {
+  flex: 2;
 }
+
+#lastViewedList {
+  flex: 1;
+}
+
+#refreshBtn {
+  margin-right: 24%;
+  margin-bottom: 2%;
+}
+
 .blur {
   -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
   filter: blur(2px);

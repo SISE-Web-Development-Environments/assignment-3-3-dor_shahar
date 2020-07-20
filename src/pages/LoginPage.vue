@@ -1,12 +1,15 @@
 <template>
   <div class="container">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredericka the Great">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin Sketch">
     <h1 class="title">Login</h1>
-    <b-form @submit.prevent="onLogin">
+    <b-form @submit.prevent="onLogin" id="form">
       <b-form-group
         id="input-group-Username"
         label-cols-sm="3"
         label="Username:"
         label-for="Username"
+        class="input"
       >
         <b-form-input
           id="Username"
@@ -24,6 +27,7 @@
         label-cols-sm="3"
         label="Password:"
         label-for="Password"
+        class="input"
       >
         <b-form-input
           id="Password"
@@ -36,10 +40,7 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
-      <b-button
-        type="submit"
-        variant="primary"
-        class="mx-auto w-100"
+      <b-button type="submit" variant="primary" class="mx-auto w-100"
         >Login</b-button
       >
       <div class="mt-2">
@@ -73,19 +74,19 @@ export default {
       form: {
         username: "",
         password: "",
-        submitError: undefined
-      }
+        submitError: undefined,
+      },
     };
   },
   validations: {
     form: {
       username: {
-        required
+        required,
       },
       password: {
-        required
-      }
-    }
+        required,
+      },
+    },
   },
   methods: {
     validateState(param) {
@@ -94,22 +95,18 @@ export default {
     },
     async Login() {
       try {
-        let response = await this.axios.post(
-          serverAddress + "/login",
-          {
-            username: this.form.username,
-            password: this.form.password
-          }
-        );
-        if (response.status == 200){
+        let response = await this.axios.post(serverAddress + "/login", {
+          username: this.form.username,
+          password: this.form.password,
+        });
+        if (response.status == 200) {
           // console.log(req.headers.cookie)
           // console.log(this.$root.store.login);
           this.$root.store.login(this.form.username);
           this.$router.push("/");
           // console.log(response.cookies)
           // this.$cookies.set("session", )
-        }
-        else{
+        } else {
           throw Error;
         }
       } catch (err) {
@@ -127,21 +124,46 @@ export default {
       // console.log("login method go");
 
       this.Login();
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "@/scss/form-style.scss";
+@import "@/scss/recipePages.scss";
+
 .container {
+  margin-top: 40px;
+  max-width: 600px;
+  text-align: center;
   background-color: white;
   border-radius: 50px;
   padding: 50px;
-  max-width: 500px;
-  text-align: center;
 }
-button{
+
+.title {
+  font-family: "Fredericka the Great";
+  margin-right: 1%;
+}
+
+button {
   background-color: green;
+}
+
+#form {
+  font-family: "Cabin Sketch";
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.mt-2 {
+  padding-top: 3%;
+}
+
+.input {
+  margin-right: 10%;
+  max-width: 400px;
+  margin-left: 2%;
 }
 </style>
