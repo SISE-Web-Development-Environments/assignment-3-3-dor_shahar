@@ -16,6 +16,12 @@ export default {
   },
   async mounted() {
       let response = await this.axios.get(serverAddress + "/user/myFamilyRecipes");
+      if(response.data == 401) {
+      this.$router.push("/").catch(() => {
+        this.$forceUpdate();
+      });
+      return;
+    }
       this.family_recipes.push(...response.data);
   },
   components: {
