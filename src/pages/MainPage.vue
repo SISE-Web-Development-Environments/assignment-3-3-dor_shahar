@@ -134,7 +134,7 @@ export default {
   padding: 8px 14px 8px 14px;
   font-family: "Indie Flower", cursive;
   font-weight: bold;
-  background-color: #51aece;
+  background-color: #17a2b8;
   border-color: white;
 }
 
