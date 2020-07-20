@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Playball&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Indie+Flower&family=Playball&display=swap');
 
 .container{
     max-width: 80%;
@@ -21,17 +21,15 @@
 .h1{
     text-shadow: 3px 3px 5px grey;
     font-size:70px;
-    font-weight: bolder;
-    font-family: "Lobster", Sans-serif;
     color: black;
     margin: auto;
     padding-top: 50px;
-    font-family: 'Playball', cursive;
+    font-family: 'Fredericka the Great', cursive;
+    font-weight: bolder;
 }
 
 .h2 {
     color: black;
-    font-family: 'Anton', sans-serif;
     font-family: 'Playball', cursive;
     font-size: 50px;
     font-weight: bold;
@@ -45,11 +43,13 @@
 }
 
 .wrapper {
+    margin: auto;
     margin-top: 50px;
     display: flex;
+    max-width: 90%;
   }
   .wrapped {
-    width: 50%;
+    max-width: 50%;
   }
   #center {
     display: block;
