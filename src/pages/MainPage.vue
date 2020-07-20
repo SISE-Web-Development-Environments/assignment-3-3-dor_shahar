@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Fredericka the Great"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredericka the Great" />
     <h1 class="title">Be Your Own Chef</h1>
     <div id="listWrapper">
       <RecipePreviewList
@@ -11,8 +8,7 @@
         title="Explore and Cook"
         :recipes="random_recipes"
         class="RandomRecipes"
-      />
-      <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
+      ></RecipePreviewList>
 
       <RecipePreviewList
         id="lastViewedList"
@@ -92,11 +88,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/main-container.scss";
-@import "@/scss/form-style.scss";
-
-.container {
-  width: 70%;
-}
 
 .title {
   padding-top: 4%;
@@ -124,6 +115,18 @@ export default {
 
 #lastViewedList {
   flex: 1;
+}
+
+#btns {
+  height: 70px;
+  width: 100%;
+}
+.btn {
+  padding: 8px 14px 8px 14px;
+  font-family: "Indie Flower", cursive;
+  font-weight: bold;
+  background-color: #17a2b8;
+  border-color: white;
 }
 
 #refreshBtn {
