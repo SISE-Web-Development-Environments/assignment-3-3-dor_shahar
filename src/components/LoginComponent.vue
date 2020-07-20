@@ -108,18 +108,13 @@ export default {
           password: this.form.password,
         });
         if (response.status == 200) {
-          // console.log(req.headers.cookie)
-          // console.log(this.$root.store.login);
           this.$root.store.login(this.form.username);
           this.$router.push("/");
-          // console.log(response.cookies)
-          // this.$cookies.set("session", )
         } else {
           throw Error;
         }
       } catch (err) {
-        console.log(err.response);
-        this.form.submitError = err.response.data;
+        this.$root.toast("Login Failed", err.response.data, "empty");
       }
     },
     onLogin() {
@@ -172,7 +167,7 @@ button {
 
 .h1 {
     font-family: "Fredericka the Great";
-    font-weight: bold;
+    font-weight: bolder;
     margin-right: 1%;
 }
 

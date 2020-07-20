@@ -13,8 +13,15 @@
     <div id="text">
       We are a couple of students for Information and Software Engineering at Ben Gurion University.<br>
       We built this site as a part of a school project. This site uses an api request to an outsource to get most of the recipe details,
-      and rest from a pirvate data base. <br>
-      The site design idea is to give the user a comfortable and elegant experience.<br>
+      and rest from a private data base. <br>
+      The site design idea is to give the user a comfortable and elegant experience.<br><br>
+      If you want to check more of our project (recommended), here are links to our previous projects:<br><br>
+      <ul style="list-style-type: none; padding:0;">
+        <li><a href="https://sise-web-development-environments.github.io/assignment2-dor-shahar/">Pacman Project</a></li>
+        <li><a href="https://sise-web-development-environments.github.io/312490394/">Dor's Website</a></li>
+        <li><a href="https://sise-web-development-environments.github.io/assignment1-freimans/">Shahar's Website</a></li>
+      </ul>
+      <br>
       We hope to see you here again!
     </div>
     <div id="mainPageLink">
@@ -51,5 +58,14 @@
   color: #17a2b8;
   font-weight: bold;
   font-size: 22px;
+}
+
+a {
+  color: black;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: blue;
 }
 </style>

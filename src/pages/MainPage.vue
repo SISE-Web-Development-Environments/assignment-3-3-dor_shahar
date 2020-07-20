@@ -130,8 +130,16 @@ export default {
 }
 
 #refreshBtn {
-  margin-right: 43%;
+  margin-right: 520px;
   margin-bottom: 2%;
+}
+
+.btn:focus {
+  background-color: #17a2b8;
+}
+
+.btn:hover {
+  background-color: #17a2b8;
 }
 
 .blur {

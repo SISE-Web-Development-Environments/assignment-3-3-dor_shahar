@@ -192,8 +192,8 @@
       <b-button
         type="submit"
         variant="primary"
-        style="width:250px;"
         class="ml-5 w-75"
+        id="submit_button"
         >Register</b-button
       >
       </div>
@@ -211,10 +211,6 @@
     >
       Register failed: {{ form.submitError }}
     </b-alert>
-    <!-- <b-card class="mt-3 md-3" header="Form Data Result">
-      <pre class="m-0"><strong>form:</strong> {{ form }}</pre>
-      <pre class="m-0"><strong>$v.form:</strong> {{ $v.form }}</pre>
-    </b-card> -->
   </div>
 </template>
 
@@ -312,9 +308,8 @@ export default {
           }
         );
         this.$router.push("/login");
-        // console.log(response);
       } catch (err) {
-        this.form.submitError = err.response.data;
+        this.$root.toast("Register Failed", err.response.data, "empty");
       }
     },
     onRegister() {
@@ -397,5 +392,9 @@ export default {
 
 .mt-2 {
   margin-right: 25%;
+}
+
+#submit_button {
+  max-width: 50%;
 }
 </style>
