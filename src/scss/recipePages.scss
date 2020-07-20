@@ -1,7 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Playball&family=Playfair+Display:ital,wght@0,400;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Playball&display=swap');
+
+
 .container{
     max-width: 80%;
-    background-color: #C7CACE;
+    background-image: url(https://www.halamish.com/products/7380/1359H.-b.jpg);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
     border-radius: 100px;
     text-align: center;
     box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.2), 20px 20px 20px 20px rgba(0, 0, 0, 0.19);
@@ -21,23 +26,84 @@
     color: black;
     margin: auto;
     padding-top: 50px;
-    font-family: 'Anton', sans-serif;
-font-family: 'Playball', cursive;
-
+    font-family: 'Playball', cursive;
 }
 
 .h2 {
     color: black;
     font-family: 'Anton', sans-serif;
     font-family: 'Playball', cursive;
-   
+    font-size: 50px;
     font-weight: bold;
 }
 
 .h3 {
     color: black;
-    font-family: 'Anton', sans-serif;
     font-family: 'Playball', cursive;
     margin-top: 15px;
     font-weight: bold;
 }
+
+.wrapper {
+    margin-top: 50px;
+    display: flex;
+  }
+  .wrapped {
+    width: 50%;
+  }
+  #center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  ul{
+      padding: 0;
+      list-style-type: none;
+  }
+  
+  .icon {
+    padding: 1px;
+    margin-bottom: 3px;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .indicators {
+    position: relative;
+    left: 2%;
+    top: 70%;
+    padding: 0;
+  }
+  
+  .indicator {
+    margin-top: -30px;
+    width: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
+    z-index: 10000;
+  }
+  .inLine{
+    display:inline;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .mb-3{
+    margin-top: 50px;
+    width: 100%;
+    display:inline-block;
+  }
+
+  .pageText {
+    font-family: 'Indie Flower', cursive;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 30px;
+  }
+
+  .li {
+    margin: 10px 20px 0px 10px;
+  }
