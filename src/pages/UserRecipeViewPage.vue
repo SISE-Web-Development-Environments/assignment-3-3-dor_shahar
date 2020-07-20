@@ -1,9 +1,11 @@
 <template>
   <div class="container">
     <div v-if="recipe">
-      <div class="recipe-header mt-3 mb-4">
-        <h1 class='h1'>{{ recipe.name }}</h1>
-        <img :src="recipe.image" id="center" class='img'/>
+      <div class="recipe-header">
+        <div id="title">
+          <h1 class="h1">{{ recipe.name }}</h1>
+        </div>
+        <img :src="recipe.image" id="center" class="img" />
         <ul class="indicators">
           <img
             src="https://cdn1.iconfinder.com/data/icons/flat-green-organic-natural-badges/500/100-vegan-4-512.png"
@@ -26,28 +28,39 @@
         </ul>
       </div>
       <div class="recipe-body">
+        <div class="mb-3">
+          <div class="inLine">
+            <img src="https://cdn4.iconfinder.com/data/icons/security-color-set/128/alarm_clock_security_color_b-512.png" class="icon" />
+            {{ recipe.preperation_time }} minutes
+          </div>
+          <div class="inLine">
+            <img src="https://cdn1.iconfinder.com/data/icons/facebook-social-media-set/142/facebook_like-512.png" class="icon" />
+            {{ recipe.popularity }} likes
+          </div>
+          <div class="inLine">
+            <img src="https://image.flaticon.com/icons/svg/3081/3081347.svg" class="icon" />
+            {{ recipe.serving_num }} dishes
+          </div>
+        </div>
         <div class="wrapper">
           <div class="wrapped">
-            <div class="mb-3">
-              <div class='inLine'>Ready in {{ recipe.preperation_time }} minutes</div>
-              <div class='inLine'>Likes: {{ recipe.popularity }} likes</div>
-              <div class='inLine'>servings: {{ recipe.serving_num }} dishes</div>
-            </div><h2 class='h2'>Ingredients:</h2>
-            <ul>
-              <li
-                v-for="(r, index) in recipe._ingredients"
-                :key="index"
-              >{{ r }}</li>
-            </ul>
+            <h2 class="h2">Ingredients</h2>
+            <div class="pageText">
+              <ul>
+                <li class="li" v-for="(r, index) in recipe._ingredients" :key="index">{{ r }}</li>
+              </ul>
+            </div>
           </div>
           <div class="wrapped">
-            <h2 class='h2'>Instructions:</h2><br>
-            <ul>
-              <li
-                v-for="(r, index) in recipe._instructions"
-                :key="index"
-              ><h3 class='h3'>Step {{index+1}}</h3>{{ r }}</li>
-            </ul>
+            <h2 class="h2">Instructions</h2>
+            <div class="pageText">
+              <ul>
+                <li class="li" v-for="(r, index) in recipe._instructions" :key="index">
+                  <h3 class="h3">Step {{index+1}}</h3>
+                  {{ r }}
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -99,12 +112,12 @@ export default {
         serving_num
       } = response.data[0];
 
-      let _ingredients = response.data[0].ingredients.split(',');
-      let instructions_spilt = response.data[0].instructions.split('\n');
-      let _instructions = instructions_spilt.filter(function (el) {
-        return !el.includes('\\n') && !el.includes('Step ');
+      let _ingredients = response.data[0].ingredients.split(",");
+      let instructions_spilt = response.data[0].instructions.split("\n");
+      let _instructions = instructions_spilt.filter(function(el) {
+        return !el.includes("\\n") && !el.includes("Step ");
       });
-      
+
       let _recipe = {
         instructions,
         _instructions,
@@ -130,5 +143,7 @@ export default {
 </script>
 
 <style scoped>
+@import "../scss/main-container.scss";
+@import "../scss/form-style.scss";
 @import "../scss/recipePages.scss";
 </style>

@@ -1,108 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Indie+Flower&family=Playball&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Indie+Flower&family=Playball&display=swap');
-
-.container{
-    max-width: 80%;
-    background-image: url(https://www.halamish.com/products/7380/1359H.-b.jpg);
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
-    border-radius: 100px;
-    text-align: center;
-    box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.2), 20px 20px 20px 20px rgba(0, 0, 0, 0.19);
-  }
-
-.img{
-      margin-top: 50px;
-      border-radius: 10%;  
-      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
-}
-
-.h1{
-    text-shadow: 3px 3px 5px grey;
-    font-size:70px;
-    color: black;
-    margin: auto;
-    padding-top: 50px;
-    font-family: 'Fredericka the Great', cursive;
-    font-weight: bolder;
+.img {
+  margin-top: 50px;
+  border-radius: 10%;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2),
+    10px 10px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .h2 {
-    color: black;
-    font-family: 'Playball', cursive;
-    font-size: 50px;
-    font-weight: bold;
+  color: black;
+  font-family: "Playball", cursive;
+  font-size: 50px;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .h3 {
-    color: black;
-    font-family: 'Playball', cursive;
-    margin-top: 15px;
-    font-weight: bold;
+  color: black;
+  font-family: "Playball", cursive;
+  margin-top: 15px;
+  font-weight: bold;
 }
 
 .wrapper {
-    margin: auto;
-    margin-top: 50px;
-    display: flex;
-    max-width: 90%;
-  }
-  .wrapped {
-    max-width: 50%;
-  }
-  #center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
-  ul{
-      padding: 0;
-      list-style-type: none;
-  }
-  
-  .icon {
-    padding: 1px;
-    margin-bottom: 3px;
-    width: 30px;
-    height: 30px;
-  }
-  
-  .indicators {
-    position: relative;
-    left: 2%;
-    top: 70%;
-    padding: 0;
-  }
-  
-  .indicator {
-    margin-top: -30px;
-    width: 100px;
-    margin: auto;
-    z-index: 10000;
-  }
-  .inLine{
-    display:inline;
-    padding-left: 5%;
-    padding-right: 5%;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .mb-3{
-    margin-top: 50px;
-    width: 100%;
-    display:inline-block;
-  }
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  max-width: 90%;
+}
+.wrapped {
+  width: 50%;
+}
+#center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+ul {
+  padding: 0;
+  list-style-type: none;
+}
 
-  .pageText {
-    font-family: 'Indie Flower', cursive;
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: 30px;
-  }
+.icon {
+  padding: 1px;
+  margin-bottom: 3px;
+  width: 35px;
+  height: 35px;
+}
 
-  .li {
-    margin: 10px 20px 0px 10px;
-  }
+.indicators {
+  position: relative;
+  left: 2%;
+  top: 70%;
+  padding: 0;
+}
+
+.indicator {
+  margin-top: -30px;
+  width: 100px;
+  margin: auto;
+  z-index: 10000;
+}
+.inLine {
+  display: inline;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 25px;
+  font-family: "Indie Flower", cursive;
+  font-weight: 1000;
+}
+
+.mb-3 {
+  margin-top: 50px;
+  width: 100%;
+  display: inline-block;
+}
+
+.pageText {
+  font-family: "Indie Flower", cursive;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.li {
+  margin: 10px 20px 0px 10px;
+}

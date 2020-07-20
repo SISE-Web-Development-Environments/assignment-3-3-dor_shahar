@@ -345,9 +345,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/main-container.scss";
 @import "@/scss/form-style.scss";
-@import "@/scss/recipePages.scss";
-@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Fredericka+the+Great&display=swap');
 
 .container {
     padding-top: 10px;
