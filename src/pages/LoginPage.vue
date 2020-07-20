@@ -137,10 +137,18 @@ export default {
 @import "@/scss/recipePages.scss";
 
 .container {
+<<<<<<< HEAD
     margin-top: 40px;
     max-width: 500px;
     padding: 20px 80px 40px 80px;
     text-align: center;    
+=======
+  background-color: white;
+  border-radius: 50px;
+  padding: 50px;
+  max-width: 500px;
+  text-align: center;
+>>>>>>> 7e59592018896025353010477bd2e44f92b98b14
 }
 button{
   background-color: green;
