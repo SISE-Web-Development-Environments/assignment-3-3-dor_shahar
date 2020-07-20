@@ -40,11 +40,11 @@
         <div :title="recipe.title" class="recipe-title">{{ recipe.name }}</div>
         <ul class="recipe-overview">
           <li>
-            <img src="https://i.ibb.co/wrwQ4C2/stopwatch.png" class="icon" />
+            <img src="https://cdn4.iconfinder.com/data/icons/security-color-set/128/alarm_clock_security_color_b-512.png" class="icon" />
             {{ recipe.preperation_time }}m
           </li>
           <li>
-            <img src="https://i.ibb.co/VJtzTQZ/like.png" class="icon" />
+            <img src="https://cdn1.iconfinder.com/data/icons/facebook-social-media-set/142/facebook_like-512.png" class="icon" />
             {{ recipe.popularity }}
           </li>
         </ul>

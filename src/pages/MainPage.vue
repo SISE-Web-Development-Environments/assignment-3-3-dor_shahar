@@ -1,35 +1,38 @@
 <template>
   <div class="container">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredericka the Great">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredericka the Great" />
     <h1 class="title">Be Your Own Chef</h1>
     <div id="listWrapper">
-    <RecipePreviewList 
-      id='randomList'
-      title="Explore and Cook"
-      :recipes="random_recipes"
-      class="RandomRecipes"
-    />
-    <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
+      <RecipePreviewList
+        id="randomList"
+        title="Explore and Cook"
+        :recipes="random_recipes"
+        class="RandomRecipes"
+      />
+      <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
 
-    <RecipePreviewList
-      id='lastViewedList'
-      title="Intrested In Lately"
-      :recipes="last_viewed_recipes"
-      :class="{
+      <RecipePreviewList
+        id="lastViewedList"
+        title="Intrested In Lately"
+        :recipes="last_viewed_recipes"
+        :class="{
         RandomRecipes: true,
         blur: !$root.store.username,
         center: true
       }"
-      disabled
-    />
+        disabled
+      />
     </div>
-        <b-button 
-        v-on:click='refreshRandom()'
-        id='refreshBtn'
+    <div id="btns">
+      <b-button v-on:click="refreshRandom()" id="refreshBtn" class="btn" type="button">Refresh</b-button>
+      <b-button
+        v-if="!$root.store.username"
+        v-on:click="toLogin()"
+        id="loginBtn"
+        class="btn"
         type="button"
-        >Refresh</b-button
-      >
-    <router-link v-if="!$root.store.username" to="/login" id='loginLink'>You need to Login to vue this</router-link>
+      >You need to Login to vue this</b-button>
+    </div>
     <!-- <div
       style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
     >
@@ -60,7 +63,12 @@ export default {
     this.last_viewed_recipes.push(...last_viewed);
   },
   methods: {
-    async refreshRandom(){
+    async toLogin() {
+      this.$router.push("/login").catch(() => {
+        this.$forceUpdate();
+      });
+    },
+    async refreshRandom() {
       const recipes = await this.getRandomRecipes();
       this.random_recipes = [];
       this.random_recipes.push(...recipes);
@@ -104,15 +112,15 @@ export default {
 .title {
   padding-top: 4%;
   font-family: "Fredericka the Great";
-font-size: 55px;
-letter-spacing: -0.8px;
-word-spacing: 0.4px;
-color: #000000;
-font-weight: 700;
-text-decoration: none;
-font-style: normal;
-font-variant: normal;
-text-transform: none;
+  font-size: 55px;
+  letter-spacing: -0.8px;
+  word-spacing: 0.4px;
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
 }
 
 #listWrapper {
@@ -129,8 +137,23 @@ text-transform: none;
   flex: 1;
 }
 
+#btns {
+  max-width: 100%;
+  // margin:auto;
+}
+
+.btn {
+  background-color: #51aece;
+  border-color: white;
+}
+
 #refreshBtn {
-  margin-right: 24%;
+  margin-left: 0%;
+  margin-bottom: 2%;
+}
+
+#loginBtn {
+
   margin-bottom: 2%;
 }
 
