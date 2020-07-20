@@ -112,6 +112,7 @@ export default {
 </script>
 
 <style scoped>
+
 .recipe-preview {
   display: inline-block;
   width: 250px;
@@ -144,6 +145,8 @@ export default {
 }
 
 .recipe-preview .recipe-footer {
+  font-family: "Indie Flower", cursive;
+  font-weight: bold;
   width: 100%;
   height: 50%;
   overflow: hidden;
@@ -196,6 +199,8 @@ export default {
 .icon {
   padding: 1px;
   margin-bottom: 3px;
+  width: 30px;
+  height: 30px;
 }
 
 .indicators {

@@ -8,8 +8,7 @@
         title="Explore and Cook"
         :recipes="random_recipes"
         class="RandomRecipes"
-      />
-      <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
+      ></RecipePreviewList>
 
       <RecipePreviewList
         id="lastViewedList"
@@ -21,7 +20,7 @@
         center: true
       }"
         disabled
-      />
+      ></RecipePreviewList>
     </div>
     <div id="btns">
       <b-button v-on:click="refreshRandom()" id="refreshBtn" class="btn" type="button">Refresh</b-button>
@@ -31,13 +30,8 @@
         id="loginBtn"
         class="btn"
         type="button"
-      >You need to Login to vue this</b-button>
+      >Login to Vue</b-button>
     </div>
-    <!-- <div
-      style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
-    >
-      Centeredasdasdad
-    </div>-->
   </div>
 </template>
 
@@ -103,11 +97,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/main-container.scss";
-@import "@/scss/form-style.scss";
-
-.container {
-  width: 70%;
-}
 
 .title {
   padding-top: 4%;
@@ -138,23 +127,25 @@ export default {
 }
 
 #btns {
-  max-width: 100%;
-  // margin:auto;
+  height: 70px;
+  width: 100%;
 }
-
 .btn {
+  padding: 8px 14px 8px 14px;
+  font-family: "Indie Flower", cursive;
+  font-weight: bold;
   background-color: #51aece;
   border-color: white;
 }
 
 #refreshBtn {
-  margin-left: 0%;
-  margin-bottom: 2%;
+  position: absolute;
+  left: 31.5%;
 }
 
 #loginBtn {
-
-  margin-bottom: 2%;
+  position: absolute;
+  right: 31%;
 }
 
 .blur {

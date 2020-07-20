@@ -51,15 +51,14 @@ ul {
 
 .indicators {
   position: relative;
-  left: 2%;
   top: 70%;
   padding: 0;
 }
 
 .indicator {
+  margin: auto;
   margin-top: -30px;
   width: 100px;
-  margin: auto;
   z-index: 10000;
 }
 .inLine {
