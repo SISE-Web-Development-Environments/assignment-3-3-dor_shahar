@@ -94,7 +94,6 @@ export default {
 <style lang="scss" scoped>
 @import "@/scss/form-style.scss";
 @import "@/scss/recipePages.scss";
-<<<<<<< HEAD
 
 
 #listWrapper {
@@ -105,21 +104,6 @@ export default {
 
 #randomList {
   flex: 2;
-=======
-.container {
-    padding-top: 40px;
-    max-width: 30%;
-    text-align: center;
-}
-
-#randomList{
-  position: absolute;
-  right: 22%;
-}
-#lastViewedList{
-  position: absolute;
-  left: 22%;
->>>>>>> 7e59592018896025353010477bd2e44f92b98b14
 }
 
 #lastViewedList {

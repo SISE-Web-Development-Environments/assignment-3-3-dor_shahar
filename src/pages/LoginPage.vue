@@ -36,10 +36,7 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
-      <b-button
-        type="submit"
-        variant="primary"
-        class="mx-auto w-100"
+      <b-button type="submit" variant="primary" class="mx-auto w-100"
         >Login</b-button
       >
       <div class="mt-2">
@@ -73,19 +70,19 @@ export default {
       form: {
         username: "",
         password: "",
-        submitError: undefined
-      }
+        submitError: undefined,
+      },
     };
   },
   validations: {
     form: {
       username: {
-        required
+        required,
       },
       password: {
-        required
-      }
-    }
+        required,
+      },
+    },
   },
   methods: {
     validateState(param) {
@@ -94,22 +91,18 @@ export default {
     },
     async Login() {
       try {
-        let response = await this.axios.post(
-          serverAddress + "/login",
-          {
-            username: this.form.username,
-            password: this.form.password
-          }
-        );
-        if (response.status == 200){
+        let response = await this.axios.post(serverAddress + "/login", {
+          username: this.form.username,
+          password: this.form.password,
+        });
+        if (response.status == 200) {
           // console.log(req.headers.cookie)
           // console.log(this.$root.store.login);
           this.$root.store.login(this.form.username);
           this.$router.push("/");
           // console.log(response.cookies)
           // this.$cookies.set("session", )
-        }
-        else{
+        } else {
           throw Error;
         }
       } catch (err) {
@@ -127,8 +120,8 @@ export default {
       // console.log("login method go");
 
       this.Login();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -137,20 +130,17 @@ export default {
 @import "@/scss/recipePages.scss";
 
 .container {
-<<<<<<< HEAD
-    margin-top: 40px;
-    max-width: 500px;
-    padding: 20px 80px 40px 80px;
-    text-align: center;    
-=======
+  margin-top: 40px;
+  max-width: 500px;
+  padding: 20px 80px 40px 80px;
+  text-align: center;
   background-color: white;
   border-radius: 50px;
   padding: 50px;
   max-width: 500px;
   text-align: center;
->>>>>>> 7e59592018896025353010477bd2e44f92b98b14
 }
-button{
+button {
   background-color: green;
 }
 </style>

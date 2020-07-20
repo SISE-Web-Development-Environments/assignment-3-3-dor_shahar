@@ -1,14 +1,11 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
     <NavBar @logout="this.Logout"/>
     <router-view />
-=======
     <NavBar/>
     <div id="routerView">
       <router-view/>
     </div>
->>>>>>> 7e59592018896025353010477bd2e44f92b98b14
   </div>
 </template>
 
