@@ -1,7 +1,8 @@
 <template>
   <div class="container">
-    <h1 class="title">My Favorites</h1>
+    <h1 class="h1">My Favorites</h1>
     <vue-horizontal-list
+      class='list'
       :items="favorites"
     >
       <template v-slot:default="{ item }">
@@ -41,4 +42,5 @@ export default {
 
 <style scoped>
 @import "../scss/main-container.scss";
+@import "../scss/userPages.scss";
 </style>

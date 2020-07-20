@@ -2,6 +2,7 @@
   <div class="container">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&effect=brick-sign" />
     <h1 class="h1">My Recipes</h1>
+    <div class='list'>
     <vue-horizontal-list
       :items="recipes"
     >
@@ -9,6 +10,7 @@
         <RecipePreview class="recipePreview" :recipe="item" :isFavoritable="false" />
       </template>
     </vue-horizontal-list>
+    </div>
   </div>
 </template>
 
@@ -48,5 +50,5 @@ export default {
 
 <style scoped>
 @import "../scss/main-container.scss";
-@import "../scss/recipePages.scss";
+@import "../scss/userPages.scss";
 </style>

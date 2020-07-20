@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title">Search Page</h1>
+    <h1 class="h1">Search Page</h1>
     <b-form @submit.prevent="onSearch">
       <b-form-group id="input-group-search" label-for="query">
         <b-form-input
@@ -72,7 +72,7 @@
         >Search</b-button
       >
     </b-form>
-    <vue-horizontal-list :items="search_results" v-if="this.search_results.length!=0">
+    <vue-horizontal-list class='list' :items="search_results" v-if="this.search_results.length!=0">
         <template v-slot:default="{item}">
           <RecipePreview class="recipePreview" :recipe="item" />
         </template>
@@ -226,5 +226,11 @@ export default {
 
 .buttons {
   margin-right: 15px;
+}
+
+.list{
+    max-width: 90%;
+    margin: auto;
+    margin-top: 50px;
 }
 </style>
