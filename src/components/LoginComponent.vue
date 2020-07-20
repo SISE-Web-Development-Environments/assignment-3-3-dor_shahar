@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title" :class="title" >Login</h1>
+    <h1 :class="title" >Login</h1>
     <b-form @submit.prevent="onLogin" id="form">
       <div id="input_wrap">
         <b-form-group
@@ -134,10 +134,20 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Indie+Flower&family=Playball&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 
-button {
-  background-color: green;
+.h1.h1 {
+    font-family: "Fredericka the Great";
+    font-weight: bolder;
+    font-size: 60px;
+    margin-right: 1%;
+    padding-bottom: 30px;
+}
+
+.h2 {
+    font-family: "Rock Salt";
+    padding-bottom: 20px;
+    margin-right: 1%;
 }
 
 #form {
@@ -163,16 +173,5 @@ button {
 #input_wrap {
     max-width: 100%;
     text-align: center;
-}
-
-.h1 {
-    font-family: "Fredericka the Great";
-    font-weight: bolder;
-    margin-right: 1%;
-}
-
-.h2 {
-    font-family: "Rock Salt";
-    margin-right: 1%;
 }
 </style>
