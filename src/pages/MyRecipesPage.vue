@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h1 class="title">My Recipes</h1>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&effect=brick-sign" />
+    <h1 class="h1">My Recipes</h1>
     <vue-horizontal-list
       :items="recipes"
     >
@@ -35,9 +36,5 @@ export default {
 </script>
 
 <style scoped>
-.recipePreview{
-  max-width: 350px;
-  /* max-height: 150px; */
-  /* padding-top: 100px; */
-}
+@import "../scss/recipePages.scss";
 </style>

@@ -33,10 +33,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/scss/form-style.scss";
-// #cols{
-//   max-width: 30%;
-// }
 #cols {
   align-items: center;
 }

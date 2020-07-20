@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <NavBar/>
-    <router-view />
+    <router-view id='routerView'/>
   </div>
 </template>
 
@@ -39,5 +39,9 @@ export default {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+}
+#routerView{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 </style>

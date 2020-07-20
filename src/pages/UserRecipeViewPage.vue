@@ -2,8 +2,8 @@
   <div class="container">
     <div v-if="recipe">
       <div class="recipe-header mt-3 mb-4">
-        <h1>{{ recipe.name }}</h1>
-        <img :src="recipe.image" class="center" />
+        <h1 class='h1'>{{ recipe.name }}</h1>
+        <img :src="recipe.image" id="center" class='img'/>
         <ul class="indicators">
           <img
             src="https://cdn1.iconfinder.com/data/icons/flat-green-organic-natural-badges/500/100-vegan-4-512.png"
@@ -29,10 +29,10 @@
         <div class="wrapper">
           <div class="wrapped">
             <div class="mb-3">
-              <div>Ready in {{ recipe.preperation_time }} minutes</div>
-              <div>Likes: {{ recipe.popularity }} likes</div>
-              <div>servings: {{ recipe.serving_num }} dishes</div>
-            </div>Ingredients:
+              <div class='inLine'>Ready in {{ recipe.preperation_time }} minutes</div>
+              <div class='inLine'>Likes: {{ recipe.popularity }} likes</div>
+              <div class='inLine'>servings: {{ recipe.serving_num }} dishes</div>
+            </div><h2 class='h2'>Ingredients:</h2>
             <ul>
               <li
                 v-for="(r, index) in recipe._ingredients"
@@ -41,12 +41,12 @@
             </ul>
           </div>
           <div class="wrapped">
-            Instructions:<br>
+            <h2 class='h2'>Instructions:</h2><br>
             <ul>
               <li
                 v-for="(r, index) in recipe._instructions"
                 :key="index"
-              >{{ r }}</li>
+              ><h3 class='h3'>Step {{index+1}}</h3>{{ r }}</li>
             </ul>
           </div>
         </div>
@@ -100,8 +100,11 @@ export default {
       } = response.data[0];
 
       let _ingredients = response.data[0].ingredients.split(',');
-      let _instructions = response.data[0].instructions.split('\\n');
-
+      let instructions_spilt = response.data[0].instructions.split('\n');
+      let _instructions = instructions_spilt.filter(function (el) {
+        return !el.includes('\\n') && !el.includes('Step ');
+      });
+      
       let _recipe = {
         instructions,
         _instructions,
@@ -127,13 +130,14 @@ export default {
 </script>
 
 <style scoped>
+@import "../scss/recipePages.scss";
 .wrapper {
   display: flex;
 }
 .wrapped {
   width: 50%;
 }
-.center {
+#center {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -143,37 +147,6 @@ ul{
     padding: 0;
     list-style-type: none;
 }
-/* ul.recipe-overview {
-  padding: 5px 10px;
-  width: 100%;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -o-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1 auto;
-  -ms-flex: 1 auto;
-  flex: 1 auto;
-  table-layout: fixed;
-  margin-bottom: 0px;
-}
-
-ul.recipe-overview li {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -o-box-flex: 1;
-  -ms-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  width: 90px;
-  display: table-cell;
-  text-align: center;
-} */
 
 .icon {
   padding: 1px;
@@ -188,8 +161,18 @@ ul.recipe-overview li {
 }
 
 .indicator {
-  width: 50px;
+  margin-top: -30px;
+  width: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
   z-index: 10000;
+}
+.inLine{
+  display:inline;
+}
+
+.mb-3{
+  display:inline-block;
 }
 /* .recipe-header{
 

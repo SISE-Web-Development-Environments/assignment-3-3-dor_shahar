@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&effect=brick-sign" />
     <div v-if="recipe">
       <div class="recipe-header">
-        <div id='title'><h1>{{ recipe.name }}</h1></div>
-        <img :src="recipe.image" class="center" />
+        <div id='title'><h1 class='h1'>{{ recipe.name }}</h1></div>
+        <img :src="recipe.image" class="img" />
         <ul class="indicators">
           <img
             src="https://cdn1.iconfinder.com/data/icons/flat-green-organic-natural-badges/500/100-vegan-4-512.png"
+          
             class="indicator"
             id="vegan_img"
             v-if="recipe.vegan"
@@ -42,7 +42,7 @@
             </ul>
           </div>
           <div class="wrapped">
-            Instructions:
+            <h2 class='h2'>Instructions:</h2>
             <ol>
               <li v-for="s in recipe._instructions" :key="s.number">{{ s.step }}</li>
             </ol>
@@ -191,10 +191,11 @@ ul.recipe-overview li {
 }
 
 .indicator {
-  width: 50px;
+  margin-top: -30px;
+  width: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
   z-index: 10000;
 }
-/* .recipe-header{
 
-} */
 </style>

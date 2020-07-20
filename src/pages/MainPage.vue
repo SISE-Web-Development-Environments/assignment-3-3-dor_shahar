@@ -5,7 +5,7 @@
       id='randomList'
       title="Random Recipes"
       :recipes="random_recipes"
-      class="RandomRecipes center"
+      class="RandomRecipes"
     />
     <b-button 
         v-on:click='refreshRandom()'
@@ -91,19 +91,20 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/scss/form-style.scss";
+@import "@/scss/recipePages.scss";
 .container {
     padding-top: 40px;
-    max-width: 400px;
+    max-width: 30%;
     text-align: center;
 }
 
 #randomList{
   position: absolute;
-  right: 20%;
+  right: 22%;
 }
 #lastViewedList{
   position: absolute;
-  left: 20%;
+  left: 22%;
 }
 
 #refreshBtn{

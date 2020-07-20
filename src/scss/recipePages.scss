@@ -1,14 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Playball&family=Playfair+Display:ital,wght@0,400;1,900&display=swap');
 .container{
-    background-color: white;
+    max-width: 80%;
+    background-color: #C7CACE;
     border-radius: 100px;
     text-align: center;
+    box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.2), 20px 20px 20px 20px rgba(0, 0, 0, 0.19);
   }
 
-  h1{
-    font-size:50px;
+.img{
+      margin-top: 50px;
+      border-radius: 10%;  
+      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.h1{
+    text-shadow: 3px 3px 5px grey;
+    font-size:70px;
     font-weight: bolder;
     font-family: "Lobster", Sans-serif;
     color: black;
     margin: auto;
-    padding-top: 20px;
+    padding-top: 50px;
+    font-family: 'Anton', sans-serif;
+font-family: 'Playball', cursive;
+
+}
+
+.h2 {
+    color: black;
+    font-family: 'Anton', sans-serif;
+    font-family: 'Playball', cursive;
+   
+    font-weight: bold;
+}
+
+.h3 {
+    color: black;
+    font-family: 'Anton', sans-serif;
+    font-family: 'Playball', cursive;
+    margin-top: 15px;
+    font-weight: bold;
 }
