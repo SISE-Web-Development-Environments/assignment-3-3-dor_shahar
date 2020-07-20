@@ -1,17 +1,19 @@
 <template>
   <div class="container">
-    <h1 class="title">Register</h1>
-    <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
+    <h1 class="h1">Register</h1>
+    <b-form @submit.prevent="onRegister" @reset.prevent="onReset" class="form">
       <b-form-group
         id="input-group-username"
         label-cols-sm="3"
         label="Username:"
         label-for="username"
+        class="form-group"
       >
         <b-form-input
           id="username"
           v-model="$v.form.username.$model"
           type="text"
+          class="inputs"
           :state="validateState('username')"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.username.required">
@@ -30,12 +32,14 @@
         label-cols-sm="3"
         label="Country:"
         label-for="country"
+        class="form-group"
       >
         <b-form-select
           id="country"
           v-model="$v.form.country.$model"
           :options="countries"
           :state="validateState('country')"
+          class="inputs"
         ></b-form-select>
         <b-form-invalid-feedback>
           Country is required
@@ -47,12 +51,14 @@
         label-cols-sm="3"
         label="Password:"
         label-for="password"
+        class="form-group"
       >
         <b-form-input
           id="password"
           type="password"
           v-model="$v.form.password.$model"
           :state="validateState('password')"
+          class="inputs"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.password.required">
           Password is required
@@ -73,12 +79,14 @@
         label-cols-sm="3"
         label="Confirm Password:"
         label-for="confirmedPassword"
+        class="form-group"
       >
         <b-form-input
           id="confirmedPassword"
           type="password"
           v-model="$v.form.confirmedPassword.$model"
           :state="validateState('confirmedPassword')"
+          class="inputs"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.confirmedPassword.required">
           Password confirmation is required
@@ -94,12 +102,14 @@
         label-cols-sm="3"
         label="Email:"
         label-for="email"
+        class="form-group"
       >
         <b-form-input
           id="email"
           type="email"
           v-model="$v.form.email.$model"
           :state="validateState('email')"
+          class="inputs"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.email.required">
           email is required
@@ -115,12 +125,14 @@
         label-cols-sm="3"
         label="First Name:"
         label-for="firstName"
+        class="form-group"
       >
         <b-form-input
           id="firstName"
           type="text"
           v-model="$v.form.firstName.$model"
           :state="validateState('firstName')"
+          class="inputs"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.firstName.required">
           First name is required
@@ -136,12 +148,14 @@
         label-cols-sm="3"
         label="Last Name:"
         label-for="lastName"
+        class="form-group"
       >
         <b-form-input
           id="lastName"
           type="text"
           v-model="$v.form.lastName.$model"
           :state="validateState('lastName')"
+          class="inputs"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.lastName.required">
           Last name is required
@@ -157,12 +171,14 @@
         label-cols-sm="3"
         label="Profile Picture:"
         label-for="picture"
+        class="form-group"
       >
         <b-form-input
           id="picture"
           type="url"
           v-model="$v.form.picture.$model"
           :state="validateState('picture')"
+          class="inputs"
         ></b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.picture.required">
           Profile Picture is required
@@ -171,7 +187,7 @@
           Not a valid URL
         </b-form-invalid-feedback>
       </b-form-group>
-
+      <div class="button-wrap">
       <b-button type="reset" variant="danger">Reset</b-button>
       <b-button
         type="submit"
@@ -180,6 +196,7 @@
         class="ml-5 w-75"
         >Register</b-button
       >
+      </div>
       <div class="mt-2">
         You have an account already?
         <router-link to="login"> Log in here</router-link>
@@ -330,9 +347,56 @@ export default {
 <style lang="scss" scoped>
 @import "@/scss/form-style.scss";
 @import "@/scss/recipePages.scss";
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Fredericka+the+Great&display=swap');
+
 .container {
-    padding-top: 40px;
+    padding-top: 10px;
     max-width: 700px;
     text-align: center;
+}
+
+.h1 {
+  padding-bottom: 20px;
+}
+
+.form {
+    font-family: "Cabin Sketch";
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 20%;
+}
+
+.inputs {
+  width: 60%;
+  margin-bottom: 1%;
+}
+
+.form-group {
+  text-align: left;
+}
+
+#input-group-country label {
+  margin-right: 2px;
+}
+
+#input-group-country input {
+  margin-left: 2px;
+}
+
+.button-wrap {
+  margin-right: 28%;
+  margin-bottom: 20px;
+}
+
+#input-group-confirmedPassword input {
+  margin-top: 15px;
+}
+
+#input-group-picture input {
+  margin-top: 15px;
+}
+
+.mt-2 {
+  margin-right: 25%;
 }
 </style>

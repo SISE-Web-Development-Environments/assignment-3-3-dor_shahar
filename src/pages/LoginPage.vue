@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredericka the Great">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin Sketch">
     <h1 class="title">Login</h1>
     <b-form @submit.prevent="onLogin" id="form">
       <b-form-group
@@ -132,6 +130,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/scss/form-style.scss";
 @import "@/scss/recipePages.scss";
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Fredericka+the+Great&display=swap');
 
 .container {
   margin-top: 40px;
