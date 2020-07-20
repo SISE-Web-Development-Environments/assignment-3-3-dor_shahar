@@ -143,6 +143,7 @@ export default {
 </script>
 
 <style scoped>
+@import "../scss/main-container.scss";
 @import "../scss/form-style.scss";
 @import "../scss/recipePages.scss";
 </style>

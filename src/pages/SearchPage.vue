@@ -193,6 +193,7 @@ export default {
 </script>
 
 <style>
+@import "../scss/main-container.scss";
 .select-class {
   display: inline-block;
   width: 20%;

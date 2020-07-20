@@ -40,5 +40,5 @@ export default {
 </script>
 
 <style scoped>
-
+@import "../scss/main-container.scss";
 </style>

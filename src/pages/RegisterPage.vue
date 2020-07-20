@@ -328,8 +328,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/main-container.scss";
 @import "@/scss/form-style.scss";
-@import "@/scss/recipePages.scss";
+
 .container {
     padding-top: 40px;
     max-width: 700px;

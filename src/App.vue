@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss">
 @import "@/scss/form-style.scss";
-@import "../scss/main-container.scss";
+@import "@/scss/main-container.scss";
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
