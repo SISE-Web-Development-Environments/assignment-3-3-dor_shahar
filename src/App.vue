@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar/>
+    <NavBar @logout="this.Logout"/>
     <router-view />
   </div>
 </template>

@@ -1,18 +1,13 @@
 <template>
   <div class="container">
     <h1 class="title">Main Page</h1>
+    <div id="listWrapper">
     <RecipePreviewList 
       id='randomList'
       title="Random Recipes"
       :recipes="random_recipes"
       class="RandomRecipes center"
     />
-    <b-button 
-        v-on:click='refreshRandom()'
-        id='refreshBtn'
-        type="button"
-        >Refresh</b-button
-      >
     <!-- <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link> -->
 
     <RecipePreviewList
@@ -26,6 +21,13 @@
       }"
       disabled
     />
+    </div>
+        <b-button 
+        v-on:click='refreshRandom()'
+        id='refreshBtn'
+        type="button"
+        >Refresh</b-button
+      >
     <!-- <div
       style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
     >
@@ -91,28 +93,28 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/scss/form-style.scss";
-.container {
-    padding-top: 40px;
-    max-width: 400px;
-    text-align: center;
+@import "@/scss/recipePages.scss";
+
+
+#listWrapper {
+  display: flex;
+  padding-right: 15%;
+  padding-top: 8%;
 }
 
-#randomList{
-  position: absolute;
-  right: 20%;
-}
-#lastViewedList{
-  position: absolute;
-  left: 20%;
+#randomList {
+  flex: 2;
 }
 
-#refreshBtn{
-  position: absolute;
-  right: 30px;
+#lastViewedList {
+  flex: 1;
 }
-.RandomRecipes {
-  margin: 10px 0 10px;
+
+#refreshBtn {
+  margin-right: 44%;
+  margin-bottom: 2%;
 }
+
 .blur {
   -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
   filter: blur(2px);

@@ -134,10 +134,13 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/scss/form-style.scss";
+@import "@/scss/recipePages.scss";
+
 .container {
-    padding-top: 40px;
-    max-width: 400px;
-    text-align: center;
+    margin-top: 40px;
+    max-width: 500px;
+    padding: 20px 80px 40px 80px;
+    text-align: center;    
 }
 button{
   background-color: green;
